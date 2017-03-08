@@ -1,0 +1,24 @@
+
+rails g scaffold dept name
+rails g scaffold rank name
+rails g scaffold group name dept:references
+rails g scaffold user number name rank:references end_month:date
+rails g scaffold system number name
+rails g scaffold project number name end_month:date
+rails g scaffold work user:references month:date power:decimal
+rails g scaffold cost group:references project:references system:references rank:references month:date power:decimal
+rails g scaffold assign group:references project:references system:references user:references month:date power:decimal
+
+rails g bootstrap:install less
+
+rails g bootstrap:themed Depts
+rails g bootstrap:themed Ranks
+rails g bootstrap:themed Groups
+rails g bootstrap:themed Users
+rails g bootstrap:themed Systems
+rails g bootstrap:themed Projects
+rails g bootstrap:themed Works
+rails g bootstrap:themed Costs
+rails g bootstrap:themed Assigns
+
+rails generate simple_form:install --bootstrap

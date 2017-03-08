@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  group: one
+  project: one
+  system: one
+  user: one
+  month: 2017-03-08
+  power: 9.99
+
+two:
+  group: two
+  project: two
+  system: two
+  user: two
+  month: 2017-03-08
+  power: 9.99

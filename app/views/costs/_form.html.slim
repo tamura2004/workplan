@@ -1,0 +1,10 @@
+= simple_form_for @cost, :html => { :class => "form-horizontal" } do |f|
+  = f.association :group
+  = f.association :project
+  = f.association :system
+  = f.association :rank
+  = f.input :month
+  = f.input :power
+  = f.button :submit, :class => 'btn-primary'
+  '
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), costs_path, :class => 'btn btn-default'

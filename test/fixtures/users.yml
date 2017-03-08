@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyString
+  name: MyString
+  rank: one
+  end_month: 2017-03-08
+
+two:
+  number: MyString
+  name: MyString
+  rank: two
+  end_month: 2017-03-08
