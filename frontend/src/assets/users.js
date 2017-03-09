@@ -1,6 +1,6 @@
 export default [
   {
-    'id': 0,
+    id: 0,
     'number': '508818',
     'name': '前川 恭絵',
     'rank_id': 3,
@@ -10,7 +10,7 @@ export default [
     'url': 'http: //localhost: 3000/users/0.json'
   },
   {
-    'id': 1,
+    id: 1,
     'number': '992410',
     'name': '森岡 文由',
     'rank_id': 0,
@@ -20,7 +20,7 @@ export default [
     'url': 'http: //localhost: 3000/users/1.json'
   },
   {
-    'id': 2,
+    id: 2,
     'number': '776962',
     'name': '奥山 三四子',
     'rank_id': 4,
@@ -30,7 +30,7 @@ export default [
     'url': 'http: //localhost: 3000/users/2.json'
   },
   {
-    'id': 3,
+    id: 3,
     'number': '864392',
     'name': '水谷 至恩',
     'rank_id': 2,
@@ -40,7 +40,7 @@ export default [
     'url': 'http: //localhost: 3000/users/3.json'
   },
   {
-    'id': 4,
+    id: 4,
     'number': '212817',
     'name': '奥村 結恵',
     'rank_id': 1,
@@ -50,7 +50,7 @@ export default [
     'url': 'http: //localhost: 3000/users/4.json'
   },
   {
-    'id': 5,
+    id: 5,
     'number': '094998',
     'name': '金沢 賢',
     'rank_id': 2,
@@ -60,7 +60,7 @@ export default [
     'url': 'http: //localhost: 3000/users/5.json'
   },
   {
-    'id': 6,
+    id: 6,
     'number': '444017',
     'name': '山村 八枝',
     'rank_id': 3,
@@ -70,7 +70,7 @@ export default [
     'url': 'http: //localhost: 3000/users/6.json'
   },
   {
-    'id': 7,
+    id: 7,
     'number': '517755',
     'name': '村瀬 範人',
     'rank_id': 4,
@@ -80,7 +80,7 @@ export default [
     'url': 'http: //localhost: 3000/users/7.json'
   },
   {
-    'id': 8,
+    id: 8,
     'number': '274351',
     'name': '小池 円',
     'rank_id': 3,
@@ -90,7 +90,7 @@ export default [
     'url': 'http: //localhost: 3000/users/8.json'
   },
   {
-    'id': 9,
+    id: 9,
     'number': '464218',
     'name': '筒井 新太',
     'rank_id': 0,
@@ -100,7 +100,7 @@ export default [
     'url': 'http: //localhost: 3000/users/9.json'
   },
   {
-    'id': 10,
+    id: 10,
     'number': '957175',
     'name': '小倉 保太',
     'rank_id': 4,
@@ -110,7 +110,7 @@ export default [
     'url': 'http: //localhost: 3000/users/10.json'
   },
   {
-    'id': 11,
+    id: 11,
     'number': '147381',
     'name': '桑原 湧世',
     'rank_id': 0,
@@ -120,7 +120,7 @@ export default [
     'url': 'http: //localhost: 3000/users/11.json'
   },
   {
-    'id': 12,
+    id: 12,
     'number': '839799',
     'name': '大竹 深華',
     'rank_id': 3,
@@ -130,7 +130,7 @@ export default [
     'url': 'http: //localhost: 3000/users/12.json'
   },
   {
-    'id': 13,
+    id: 13,
     'number': '204884',
     'name': '宮崎 苗伶',
     'rank_id': 0,
@@ -140,7 +140,7 @@ export default [
     'url': 'http: //localhost: 3000/users/13.json'
   },
   {
-    'id': 14,
+    id: 14,
     'number': '833916',
     'name': '佐々木 瑠琉',
     'rank_id': 2,
@@ -150,7 +150,7 @@ export default [
     'url': 'http: //localhost: 3000/users/14.json'
   },
   {
-    'id': 15,
+    id: 15,
     'number': '613146',
     'name': '前田 健誠',
     'rank_id': 4,
@@ -160,7 +160,7 @@ export default [
     'url': 'http: //localhost: 3000/users/15.json'
   },
   {
-    'id': 16,
+    id: 16,
     'number': '191999',
     'name': '中村 洸希',
     'rank_id': 2,
@@ -170,7 +170,7 @@ export default [
     'url': 'http: //localhost: 3000/users/16.json'
   },
   {
-    'id': 17,
+    id: 17,
     'number': '701224',
     'name': '滝沢 智颯',
     'rank_id': 3,
@@ -180,7 +180,7 @@ export default [
     'url': 'http: //localhost: 3000/users/17.json'
   },
   {
-    'id': 18,
+    id: 18,
     'number': '272158',
     'name': '渡辺 友羽',
     'rank_id': 2,
@@ -190,7 +190,7 @@ export default [
     'url': 'http: //localhost: 3000/users/18.json'
   },
   {
-    'id': 19,
+    id: 19,
     'number': '172231',
     'name': '花田 綾芽',
     'rank_id': 3,

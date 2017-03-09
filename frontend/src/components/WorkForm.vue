@@ -6,21 +6,20 @@ input.form-control(
   step="0.1",
   type="number",
   :value="power",
+  @click="CHANGE_WORK({userId: userId, month: month, power:power})"
   onfocus="this.select()"
 )
 
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import { CHANGE_WORK } from '@/vuex/mutation-types'
 
 export default {
   name: 'WorkForm',
-  props: ['userId', 'month'],
-  data () {
-    return {
-      power: 2
-    }
-  }
+  props: ['userId', 'month', 'power'],
+  methods: mapActions([CHANGE_WORK])
 }
 
 </script>
