@@ -1,6 +1,6 @@
 <template lang="pug">
 .container
-  h1 要員計画
+  h5 要員計画
   table.table.table-sm
     thead
       tr
@@ -10,16 +10,14 @@
         th(v-for="month in months") {{ month.format('MM月') }}
     tbody
       tr(v-for="user in orderBy(users, 'rank_id')")
-        td {{ user.id }}
+        td {{ user.rank_id }}
         td {{ user.number }}
         td {{ user.name }}
         td#month(v-for="month in months")
-          WorkForm(
-            :power="workByUserMonth(user.id, month.format('YYYY-MM'))",
-            :userId="user.id",
-            :month="month.format('YYYY-MM')"
+          Power(
+            :user="user",
+            :month="month"
           )
-  p {{ works }}
 
 </template>
 
@@ -27,11 +25,11 @@
 import { mapGetters } from 'vuex'
 import moment from 'moment'
 import USERS from '@/assets/users'
-import WorkForm from '@/components/WorkForm'
+import Power from './works/Power'
 
 export default {
   name: 'Works',
-  components: { WorkForm },
+  components: { Power },
   computed: {
     ...mapGetters(['works', 'workByUserMonth']),
     months () {

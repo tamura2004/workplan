@@ -25,6 +25,7 @@ export default {
 #app
   font-family "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif
   -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale                   
+  -moz-osx-font-smoothing grayscale
+  font-size 80%
 
 </style>

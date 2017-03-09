@@ -5,7 +5,8 @@ Vue.use(Vuex)
 import {
   CHANGE_WORK,
   CREATE_WORK,
-  UPDATE_WORK
+  UPDATE_WORK,
+  DELETE_WORK
 } from './mutation-types'
 
 import USERS from '@/assets/users'
@@ -23,30 +24,6 @@ const state = {
   ]
 }
 
-const actions = {
-  [CHANGE_WORK] ({commit, state}, {userId, month, power}) {
-    let ref = null
-    for (const work of state.works) {
-      if (work.user_id === userId && work.month === month) {
-        ref = Object.assign({}, work)
-      }
-    }
-
-    if (ref === null) {
-      commit(CREATE_WORK, {
-        user_id: userId,
-        month: month,
-        power: power
-      })
-    } else {
-      commit(UPDATE_WORK, {
-        id: ref.id,
-        power: power
-      })
-    }
-  }
-}
-
 const getters = {
   ranks: state => state.ranks,
   users: state => state.users,
@@ -60,17 +37,37 @@ const getters = {
       }
     }
 
-    if (ref === null) {
-      ref = ''
-    }
+    if (ref === null) ref = ''
 
     return ref
   }
 }
 
+const actions = {
+  [CHANGE_WORK] ({commit, state}, [user, month, power]) {
+    let ref = null
+    const _month = month.format('YYYY-MM')
+
+    for (const work of state.works) {
+      if (work.user_id === user.id && work.month === _month) {
+        ref = Object.assign({}, work)
+      }
+    }
+
+    if (ref === null) {
+      commit(CREATE_WORK, [user.id, _month, power])
+    } else {
+      if (typeof power === 'string' || power === 0) {
+        commit(DELETE_WORK, ref.id)
+      } else {
+        commit(UPDATE_WORK, [ref.id, power])
+      }
+    }
+  }
+}
+
 const mutations = {
-  [UPDATE_WORK] (state, {id, power}) {
-    console.log('update')
+  [UPDATE_WORK] (state, [id, power]) {
     let ref = null
     for (let work of state.works) {
       if (work.id === id) {
@@ -82,15 +79,23 @@ const mutations = {
       console.log('error', id, power)
     }
   },
-  [CREATE_WORK] (state, {user_id, month, power}) {
-    console.log('create')
-    const id = Math.max(state.works.map((work) => work.id)) + 1
+  [CREATE_WORK] (state, [userId, month, power]) {
+    let id = null
+    for (const work of state.works) {
+      if (id < work.id) {
+        id = work.id
+      }
+    }
+    id++
     state.works.push({
       id: id,
-      user_id: user_id,
+      user_id: userId,
       month: month,
       power: power
     })
+  },
+  [DELETE_WORK] (state, id) {
+    state.works.splice(id, 1)
   }
 }
 
