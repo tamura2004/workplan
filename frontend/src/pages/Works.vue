@@ -7,7 +7,8 @@
         th rank
         th#number 番号
         th#name 氏名
-        th(v-for="month in months") {{ month.format('MM月') }}
+        th(v-for="month in months") {{ month.name }}
+        th 合計
     tbody
       tr(v-for="user in orderBy(users, 'rank_id')")
         td {{ user.rank_id }}
@@ -18,44 +19,44 @@
             :user="user",
             :month="month"
           )
+        td
+          PowerTotalByUser(:user="user")
+      tr
+        td(colspan="3") 合計
+        td(v-for="month in months")
+          PowerTotalByMonth(:month="month")
+        td
+          PowerTotal
 
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import moment from 'moment'
-import USERS from '@/assets/users'
 import Power from './works/Power'
+import PowerTotalByMonth from './works/PowerTotalByMonth'
+import PowerTotalByUser from './works/PowerTotalByUser'
+import PowerTotal from './works/PowerTotal'
 
 export default {
   name: 'Works',
-  components: { Power },
-  computed: {
-    ...mapGetters(['works', 'workByUserMonth']),
-    months () {
-      return Array.from(new Array(12)).map((v, i) => moment().add(i, 'months'))
-    }
-  },
-  data () {
-    return {
-      users: USERS
-    }
-  }
+  components: { Power, PowerTotalByMonth, PowerTotalByUser, PowerTotal },
+  computed: mapGetters(['works', 'months', 'users'])
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="stylus" scoped>
 #name, #number
-  width 100px
+  width 11%
   
 td#month
   padding 0
-  height 100%
+  width 5.5%
   
   input
     width 100%
     height 100%
+    line-height 100%
     padding 2px 4px
 
 

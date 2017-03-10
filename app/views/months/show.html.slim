@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @month.name
+p
+  strong Date:
+  = @month.date
+
+= link_to 'Edit', edit_month_path(@month)
+'  |
+= link_to 'Back', months_path

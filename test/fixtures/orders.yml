@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project: one
+  group: one
+  system: one
+  price: MyString
+
+two:
+  project: two
+  group: two
+  system: two
+  price: MyString

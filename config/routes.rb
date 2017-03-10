@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :orders
+  resources :months
   resources :works
   resources :assigns
   resources :costs

@@ -10,18 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308104405) do
+ActiveRecord::Schema.define(version: 20170310083729) do
 
   create_table "assigns", force: :cascade do |t|
     t.integer  "group_id"
     t.integer  "project_id"
     t.integer  "system_id"
     t.integer  "user_id"
-    t.date     "month"
+    t.integer  "month_id"
     t.decimal  "power"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_assigns_on_group_id"
+    t.index ["month_id"], name: "index_assigns_on_month_id"
     t.index ["project_id"], name: "index_assigns_on_project_id"
     t.index ["system_id"], name: "index_assigns_on_system_id"
     t.index ["user_id"], name: "index_assigns_on_user_id"
@@ -32,11 +33,12 @@ ActiveRecord::Schema.define(version: 20170308104405) do
     t.integer  "project_id"
     t.integer  "system_id"
     t.integer  "rank_id"
-    t.date     "month"
+    t.integer  "month_id"
     t.decimal  "power"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_costs_on_group_id"
+    t.index ["month_id"], name: "index_costs_on_month_id"
     t.index ["project_id"], name: "index_costs_on_project_id"
     t.index ["rank_id"], name: "index_costs_on_rank_id"
     t.index ["system_id"], name: "index_costs_on_system_id"
@@ -56,6 +58,25 @@ ActiveRecord::Schema.define(version: 20170308104405) do
     t.index ["dept_id"], name: "index_groups_on_dept_id"
   end
 
+  create_table "months", force: :cascade do |t|
+    t.string   "name"
+    t.date     "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "project_id"
+    t.integer  "group_id"
+    t.integer  "system_id"
+    t.string   "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_orders_on_group_id"
+    t.index ["project_id"], name: "index_orders_on_project_id"
+    t.index ["system_id"], name: "index_orders_on_system_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string   "number"
     t.string   "name"
@@ -66,6 +87,7 @@ ActiveRecord::Schema.define(version: 20170308104405) do
 
   create_table "ranks", force: :cascade do |t|
     t.string   "name"
+    t.integer  "unit_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -89,10 +111,11 @@ ActiveRecord::Schema.define(version: 20170308104405) do
 
   create_table "works", force: :cascade do |t|
     t.integer  "user_id"
-    t.date     "month"
+    t.integer  "month_id"
     t.decimal  "power"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["month_id"], name: "index_works_on_month_id"
     t.index ["user_id"], name: "index_works_on_user_id"
   end
 

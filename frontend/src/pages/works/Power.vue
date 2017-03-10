@@ -16,10 +16,10 @@ export default {
   props: ['user', 'month'],
   methods: mapActions([CHANGE_WORK]),
   computed: {
-    ...mapGetters(['workByUserMonth']),
+    ...mapGetters(['workPower']),
     power: {
       get () {
-        return this.workByUserMonth(this.user.id, this.month.format('YYYY-MM'))
+        return this.workPower(this.user, this.month)
       },
       set (power) {
         this.CHANGE_WORK([this.user, this.month, power])
@@ -37,6 +37,6 @@ input
   width 100%
   height 100%
   padding 2px 4px
-
+  font-size 0.8rem
 
 </style>

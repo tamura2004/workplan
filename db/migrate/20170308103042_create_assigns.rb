@@ -5,7 +5,7 @@ class CreateAssigns < ActiveRecord::Migration[5.0]
       t.references :project, foreign_key: true
       t.references :system, foreign_key: true
       t.references :user, foreign_key: true
-      t.date :month
+      t.references :month, foreign_key: true
       t.decimal :power
 
       t.timestamps
