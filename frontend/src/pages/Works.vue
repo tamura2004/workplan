@@ -1,7 +1,7 @@
 <template lang="pug">
 .container
   h5 要員計画
-  table.table.table-sm
+  table.table.table-sm.table-bordered
     thead
       tr
         th rank
@@ -52,6 +52,7 @@ export default {
 td#month
   padding 0
   width 5.5%
+  height 100%
   
   input
     width 100%
