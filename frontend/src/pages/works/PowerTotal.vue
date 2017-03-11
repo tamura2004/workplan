@@ -1,6 +1,6 @@
 <template lang="pug">
 
-p {{ powerTotal }}
+span {{ powerTotal }}
 
 </template>
 
@@ -17,7 +17,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="stylus" scoped>
 
-p
+span
   width 100%
   height 100%
   padding 2px 4px

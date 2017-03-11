@@ -38,5 +38,6 @@ input
   height 100%
   padding 2px 4px
   font-size 0.8rem
+  border-radius 0
 
 </style>
