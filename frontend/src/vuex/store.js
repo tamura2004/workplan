@@ -1,13 +1,17 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
+import works from './modules/works'
+import axios from 'axios'
+import createLogger from 'vuex/dist/logger'
+
 Vue.use(Vuex)
 
-import {
-  CHANGE_WORK,
-  CREATE_WORK,
-  UPDATE_WORK,
-  DELETE_WORK
-} from './mutation-types'
+axios.defaults.headers.post['Content-Type'] = 'application/json'
+axios.defaults.headers.put['Content-Type'] = 'application/json'
+
+const http = axios.create({
+  baseUrl: 'http://localhost:3000/'
+})
 
 import USERS from '@/assets/users'
 import RANKS from '@/assets/ranks'
@@ -41,91 +45,26 @@ const state = {
 const getters = {
   ranks: state => state.ranks,
   users: state => state.users,
-  works: state => state.works,
-  months: state => state.months,
-  work: state => (user, month) => {
-    // month = month.format('YYYY-MM')
-    return state.works.find((work) =>
-      work.user_id === user.id && work.month_id === month.id
-    )
-  },
-  workPower: (state, getters) => (user, month) => {
-    const work = getters.work(user, month)
-    return work == null ? '' : work.power
-  },
-  powerTotalByMonth: state => month => {
-    let power = 0
-    for (const work of state.works) {
-      if (work.month_id === month.id) {
-        power += work.power
-      }
-    }
-    return power
-  },
-  powerTotalByUser: state => user => {
-    let power = 0
-    for (const work of state.works) {
-      if (work.user_id === user.id) {
-        power += work.power
-      }
-    }
-    return power
-  },
-  powerTotal: state => {
-    let power = 0
-    for (const work of state.works) {
-      power += work.power
-    }
-    return power
-  }
+  months: state => state.months
 }
 
 const actions = {
-  [CHANGE_WORK] ({commit, getters}, [user, month, power]) {
-    const work = getters.work(user, month)
-    if (work == null) {
-      commit(CREATE_WORK, [user, month, power])
-    } else if (typeof power === 'string' || power === 0) {
-      commit(DELETE_WORK, work)
-    } else {
-      commit(UPDATE_WORK, [work, power])
-    }
-  }
 }
 
 const mutations = {
-  [UPDATE_WORK] (state, [work, power]) {
-    work.power = power
-  },
-  [CREATE_WORK] (state, [user, month, power]) {
-    let id = null
-    for (const work of state.works) {
-      if (id < work.id) {
-        id = work.id
-      }
-    }
-    id++
-    state.works.push({
-      id: id,
-      user_id: user.id,
-      month_id: month.id,
-      power: power
-    })
-  },
-  [DELETE_WORK] (state, work) {
-    state.works.splice(work.id, 1)
-  }
 }
 
-import createLogger from 'vuex/dist/logger'
+
+const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
   state,
   getters,
   actions,
   mutations,
-  plugins: [createLogger({
-    collapsed: false
-  })],
-  strict: true
+  modules: {
+    works
+  },
+  strict: debug,
+  plugins: debug ? [createLogger()] : []
 })
