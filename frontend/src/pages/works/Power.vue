@@ -2,7 +2,9 @@
 
 input.form-control(
   v-model.lazy.number="power",
-  onfocus="this.select()"
+  onfocus="this.select()",
+  @keyup="handleKeydown",
+  :id="`user${index}month${month.id}`"
 )
 
 </template>
@@ -11,10 +13,37 @@ input.form-control(
 import { mapActions, mapGetters } from 'vuex'
 import { CHANGE_WORK } from '@/vuex/mutation-types'
 
+function select (query) {
+  const cell = document.querySelector(query)
+  if (cell !== null) {
+    cell.select()
+  }
+}
+
 export default {
   name: 'Power',
-  props: ['user', 'month'],
-  methods: mapActions([CHANGE_WORK]),
+  props: ['user', 'index', 'month'],
+  methods: {
+    ...mapActions([CHANGE_WORK]),
+    handleKeydown (e) {
+      if (e.code === 'ArrowRight') {
+        const query = `#user${this.index}month${this.month.id + 1}`
+        select(query)
+      }
+      if (e.code === 'ArrowLeft') {
+        const query = `#user${this.index}month${this.month.id - 1}`
+        select(query)
+      }
+      if (e.code === 'ArrowUp') {
+        const query = `#user${this.index - 1}month${this.month.id}`
+        select(query)
+      }
+      if (e.code === 'ArrowDown') {
+        const query = `#user${this.index + 1}month${this.month.id}`
+        select(query)
+      }
+    }
+  },
   computed: {
     ...mapGetters(['workPower']),
     power: {

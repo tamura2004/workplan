@@ -1,17 +1,17 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
 import works from './modules/works'
-import axios from 'axios'
+// import axios from 'axios'
 import createLogger from 'vuex/dist/logger'
 
 Vue.use(Vuex)
 
-axios.defaults.headers.post['Content-Type'] = 'application/json'
-axios.defaults.headers.put['Content-Type'] = 'application/json'
+// axios.defaults.headers.post['Content-Type'] = 'application/json'
+// axios.defaults.headers.put['Content-Type'] = 'application/json'
 
-const http = axios.create({
-  baseUrl: 'http://localhost:3000/'
-})
+// const http = axios.create({
+//   baseUrl: 'http://localhost:3000/'
+// })
 
 import USERS from '@/assets/users'
 import RANKS from '@/assets/ranks'
@@ -19,13 +19,6 @@ import RANKS from '@/assets/ranks'
 const state = {
   ranks: RANKS,
   users: USERS,
-  works: [
-    { id: 0, user_id: 0, month_id: 0, power: 0.5 },
-    { id: 1, user_id: 0, month_id: 1, power: 1.5 },
-    { id: 2, user_id: 0, month_id: 2, power: 2.5 },
-    { id: 3, user_id: 0, month_id: 3, power: 3.5 },
-    { id: 4, user_id: 0, month_id: 4, power: 4.5 }
-  ],
   months: [
     { id: 0, name: '4月' },
     { id: 1, name: '5月' },
@@ -53,7 +46,6 @@ const actions = {
 
 const mutations = {
 }
-
 
 const debug = process.env.NODE_ENV !== 'production'
 

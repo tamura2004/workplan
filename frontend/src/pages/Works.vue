@@ -10,12 +10,13 @@
         th(v-for="month in months") {{ month.name }}
         th 合計
     tbody
-      tr(v-for="user in orderBy(users, 'rank_id')")
+      tr(v-for="(user, index) in orderBy(users, 'rank_id')")
         td {{ user.rank_id }}
         td {{ user.number }}
         td {{ user.name }}
         td#month(v-for="month in months")
           Power(
+            :index="index",
             :user="user",
             :month="month"
           )
@@ -32,6 +33,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+
 import Power from './works/Power'
 import PowerTotalByMonth from './works/PowerTotalByMonth'
 import PowerTotalByUser from './works/PowerTotalByUser'
