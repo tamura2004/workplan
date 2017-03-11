@@ -4,7 +4,7 @@ input.form-control(
   v-model.lazy.number="power",
   onfocus="this.select()",
   @keyup="handleKeydown",
-  :id="`user${index}month${month.id}`"
+  :id="cellId(0,0)"
 )
 
 </template>
@@ -12,40 +12,22 @@ input.form-control(
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import { CHANGE_WORK } from '@/vuex/mutation-types'
-
-function select (query) {
-  const cell = document.querySelector(query)
-  if (cell !== null) {
-    cell.select()
-  }
-}
+import moveWithArrowKey from '@/components/moveWithArrowKey'
 
 export default {
   name: 'Power',
-  props: ['user', 'index', 'month'],
+  props: ['user', 'month', 'row', 'col'],
   methods: {
     ...mapActions([CHANGE_WORK]),
     handleKeydown (e) {
-      if (e.code === 'ArrowRight') {
-        const query = `#user${this.index}month${this.month.id + 1}`
-        select(query)
-      }
-      if (e.code === 'ArrowLeft') {
-        const query = `#user${this.index}month${this.month.id - 1}`
-        select(query)
-      }
-      if (e.code === 'ArrowUp') {
-        const query = `#user${this.index - 1}month${this.month.id}`
-        select(query)
-      }
-      if (e.code === 'ArrowDown') {
-        const query = `#user${this.index + 1}month${this.month.id}`
-        select(query)
-      }
+      moveWithArrowKey(e, this.cellId)
     }
   },
   computed: {
     ...mapGetters(['workPower']),
+    cellId () {
+      return (x, y) => `user${this.row + y}month${this.col + x}`
+    },
     power: {
       get () {
         return this.workPower(this.user, this.month)

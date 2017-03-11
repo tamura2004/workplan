@@ -10,13 +10,14 @@
         th(v-for="month in months") {{ month.name }}
         th 合計
     tbody
-      tr(v-for="(user, index) in orderBy(users, 'rank_id')")
+      tr(v-for="(user, row) in orderBy(users, 'rank_id')")
         td {{ user.rank_id }}
         td {{ user.number }}
         td {{ user.name }}
-        td#month(v-for="month in months")
+        td#month(v-for="(month, col) in months")
           Power(
-            :index="index",
+            :row="row",
+            :col="col",
             :user="user",
             :month="month"
           )
