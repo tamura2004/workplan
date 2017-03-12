@@ -1,5 +1,8 @@
-require 'rails_helper'
+# -*- encoding: utf-8 -*-
 
-RSpec.describe Dept, type: :model do
-  it { expect(build :dept).to be_valid }
+require 'spec_helper'
+require './models/dept'
+
+describe Dept do
+
 end

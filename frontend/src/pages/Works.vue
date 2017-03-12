@@ -39,11 +39,15 @@ import Power from './works/Power'
 import PowerTotalByMonth from './works/PowerTotalByMonth'
 import PowerTotalByUser from './works/PowerTotalByUser'
 import PowerTotal from './works/PowerTotal'
+import { LOAD_WORKS } from '@/vuex/mutation-types'
 
 export default {
   name: 'Works',
   components: { Power, PowerTotalByMonth, PowerTotalByUser, PowerTotal },
-  computed: mapGetters(['works', 'months', 'users'])
+  computed: mapGetters(['works', 'months', 'users']),
+  created () {
+    this.$store.dispatch(LOAD_WORKS)
+  }
 }
 </script>
 

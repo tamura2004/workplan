@@ -1,5 +1,8 @@
-require 'rails_helper'
+# -*- encoding: utf-8 -*-
 
-RSpec.describe User, type: :model do
-  it { expect(build :user).to be_valid}
+require 'spec_helper'
+require './models/user'
+
+describe User do
+
 end

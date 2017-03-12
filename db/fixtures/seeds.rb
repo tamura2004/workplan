@@ -1,4 +1,17 @@
 require "gimei"
+require "pp"
+
+date = Date.today.beginning_of_month
+
+24.times do |i|
+  Month.seed do |s|
+    s.id = i
+    s.name = date.strftime("%m月")
+    s.date = date
+
+    date = date.next_month
+  end
+end
 
 2.times do |i|
   dept_name = Gimei.last.katakana
@@ -17,7 +30,6 @@ require "gimei"
   end
 end
 
-
 %w(PM TL CF AS BP).each_with_index do |name, id|
   Rank.seed do |s|
     s.id = id
@@ -33,19 +45,7 @@ end
     s.number = sprintf("%06d",rand(1000000))
     s.rank_id = rand(5)
     s.group_id = rand(4)
-    s.end_month = Date.new(2018,3,1)
-  end
-end
-
-date = Date.today.beginning_of_month
-
-24.times do |i|
-  Month.seed do |s|
-    s.id = i
-    s.name = date.strftime("%m月")
-    s.date = date
-
-    date = date.next_month
+    s.month_id = rand(24)
   end
 end
 
@@ -64,62 +64,72 @@ varb = %w(構築 更改 制度対応 廃棄対応 機能追加 性能改善)
     s.id = i
     s.number = rand(10000000) * 1000
     s.name = "#{Gimei.last.kanji}システムの#{varb.sample}"
-    s.end_month = Date.new(2018,3,1)
+    s.month_id = rand(24)
   end
 end
 
-100.times do |i|
-  begin
-    Work.seed do |s|
-      s.id = i
-      s.month_id = rand(12)
-      s.user_id = rand(20)
-      s.power = rand(10)/10.0
-    end
-  rescue
+params = 100.times.map{
+  [rand(12), rand(20)]
+}.sort.uniq
+
+pp params
+
+params.each_with_index do |arr, id|
+  month_id, user_id = *arr
+  Work.seed do |s|
+    s.id = id
+    s.month_id = month_id
+    s.user_id = user_id
+    s.power = rand(10) * 10 + 10
   end
 end
 
-20.times do |id|
-  begin
-    Order.seed do |s|
-      s.id = id
-      s.project_id = rand(10)
-      s.group_id = rand(4)
-      s.system_id = rand(10)
-      s.price = rand(10000000)
-    end
-  rescue
+params = 20.times.map{
+  [rand(10), rand(4), rand(10)]
+}.uniq
+
+params.each_with_index do |arr, id|
+  project_id, group_id, system_id = *arr
+  Order.seed do |s|
+    s.id = id
+    s.project_id = project_id
+    s.group_id = group_id
+    s.system_id = system_id
+    s.price = rand(10000000)
   end
 end
 
-100.times do |id|
-  begin
-    Cost.seed do |s|
-      s.id = id
-      s.group_id = rand(4)
-      s.project_id = rand(10)
-      s.system_id = rand(10)
-      s.rank_id = rand(5)
-      s.month_id = rand(12)
-      s.power = rand(30)/10.0
-    end
-  rescue
+params = 100.times.map{
+  [rand(4), rand(10), rand(10), rand(5), rand(12)]
+}.uniq
+
+params.each_with_index do |arr, id|
+  group_id, project_id, system_id, rank_id, month_id = *arr
+  Cost.seed do |s|
+    s.id = id
+    s.group_id = group_id
+    s.project_id = project_id
+    s.system_id = system_id
+    s.rank_id = rank_id
+    s.month_id = month_id
+    s.power = rand(30) * 10 + 10
   end
 end
 
-100.times do |id|
-  begin
-    Assign.seed do |s|
-      s.id = id
-      s.group_id = rand(4)
-      s.project_id = rand(10)
-      s.system_id = rand(10)
-      s.user_id = rand(20)
-      s.month_id = rand(12)
-      s.power = rand(30)/10.0
-    end
-  rescue
+params = 100.times.map{
+  [rand(4), rand(10), rand(10), rand(20), rand(12)]
+}.uniq
+
+params.each_with_index do |arr, id|
+  group_id, project_id, system_id, user_id, month_id = *arr
+  Assign.seed do |s|
+    s.id = id
+    s.group_id = group_id
+    s.project_id = project_id
+    s.system_id = system_id
+    s.user_id = user_id
+    s.month_id = month_id
+    s.power = rand(30) * 10 + 10
   end
 end
 

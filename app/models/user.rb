@@ -1,9 +1,8 @@
 class User < ApplicationRecord
-  belongs_to :rank
-  belongs_to :group
+  belongs_to :rank, required: true
+  belongs_to :group, required: true
+  belongs_to :month, required: true
 
   validates :number, presence: true, uniqueness: true
   validates :name, presence: true, uniqueness: true
-  validates :rank, presence: true
-  validates :group, presence: true
 end

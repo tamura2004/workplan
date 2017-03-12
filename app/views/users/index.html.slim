@@ -9,7 +9,7 @@ table.table.table-striped
       th= model_class.human_attribute_name(:name)
       th= model_class.human_attribute_name(:rank_id)
       th= model_class.human_attribute_name(:group_id)
-      th= model_class.human_attribute_name(:end_month)
+      th 終了月
       th= model_class.human_attribute_name(:created_at)
       th=t '.actions', :default => t("helpers.actions")
   tbody
@@ -20,7 +20,7 @@ table.table.table-striped
         td= user.name
         td= user.rank&.name
         td= user.group&.name
-        td= user.end_month
+        td= user.month&.date&.strftime("%Y/%m")
         td=l user.created_at
         td
           = link_to t('.show', :default => t("helpers.links.show")), user_path(user), :class => 'btn btn-default btn-xs'

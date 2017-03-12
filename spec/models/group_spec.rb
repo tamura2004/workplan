@@ -1,5 +1,8 @@
-require 'rails_helper'
+# -*- encoding: utf-8 -*-
 
-RSpec.describe Group, type: :model do
-  it { expect(build :group).to be_valid }
+require 'spec_helper'
+require './models/group'
+
+describe Group do
+
 end

@@ -34,7 +34,7 @@ export default {
         return this.workPower(this.user, this.month)
       },
       set (power) {
-        this.CHANGE_WORK([this.user, this.month, power])
+        this.CHANGE_WORK([this.user, this.month, parseInt(power * 100)])
       }
     }
   }

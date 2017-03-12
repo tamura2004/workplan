@@ -1,6 +1,6 @@
 <template lang="pug">
 
-span {{ powerTotal }}
+span {{ powerTotal / 100 }}
 
 </template>
 

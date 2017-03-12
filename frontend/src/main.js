@@ -8,8 +8,10 @@ import App from './App'
 import router from './router'
 import store from './vuex/store'
 import Vue2Filters from 'vue2-filters'
+import BootstrapVue from 'bootstrap-vue'
 
 Vue.use(Vue2Filters)
+Vue.use(BootstrapVue)
 
 Vue.config.productionTip = false
 

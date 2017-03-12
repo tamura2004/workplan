@@ -6,18 +6,38 @@
     integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ",
     crossorigin="anonymous"
   )
-  nav.navbar.navbar-toggleable-md
-    .navbar-brand Workplan
-    .navbar-nav
-      router-link.nav-item.nav-link(to="/workplan/frontend/works") 要員計画
 
-  router-view
+  .row
+    .col-2
+      b-dropdown(text="マスター管理")
+        a.dropdown-item(href='http://localhost:3000/depts') 部
+        a.dropdown-item(href='http://localhost:3000/ranks') ランク
+        a.dropdown-item(href='http://localhost:3000/groups') グループ
+        a.dropdown-item(href='http://localhost:3000/users') 担当者
+        a.dropdown-item(href='http://localhost:3000/systems') システム
+        a.dropdown-item(href='http://localhost:3000/projects') プロジェクト
+
+      b-dropdown(text="データ補正")
+        a.dropdown-item(href='http://localhost:3000/works') 要員計画
+        a.dropdown-item(href='http://localhost:3000/orders') 発注情報
+        a.dropdown-item(href='http://localhost:3000/costs') 開発計画
+        a.dropdown-item(href='http://localhost:3000/assigns') アサイン
+
+    .col-10
+      router-view
 
 </template>
 
 <script>
+import { LOAD_USERS, LOAD_RANKS, LOAD_MONTHS } from '@/vuex/mutation-types'
+
 export default {
-  name: 'app'
+  name: 'app',
+  created () {
+    this.$store.dispatch(LOAD_USERS)
+    this.$store.dispatch(LOAD_RANKS)
+    this.$store.dispatch(LOAD_MONTHS)
+  }
 }
 </script>
 
@@ -28,4 +48,7 @@ export default {
   -moz-osx-font-smoothing grayscale
   font-size 80%
 
+.btn#dropdownMenuButton
+  width 160px
+  margin 8px 16px
 </style>

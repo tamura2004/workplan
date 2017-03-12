@@ -28,6 +28,14 @@ html lang="en"
           = menu_item '担当者', '/users'
           = menu_item 'システム', '/systems'
           = menu_item 'プロジェクト', '/projects'
+          
+        = drop_down "月別入力"
+          = menu_item '要員計画', 'http://localhost:8080/works'
+          = menu_item '発注情報', 'http://localhost:8080/works'
+          = menu_item '開発計画', 'http://localhost:8080/works'
+          = menu_item 'アサイン', 'http://localhost:8080/works'
+
+        = drop_down "データ補正"
           = menu_item '要員計画', '/works'
           = menu_item '発注情報', '/orders'
           = menu_item '開発計画', '/costs'

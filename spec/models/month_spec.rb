@@ -1,5 +1,8 @@
-require 'rails_helper'
+# -*- encoding: utf-8 -*-
 
-RSpec.describe Month, type: :model do
-  it { expect(build :month).to be_valid}
+require 'spec_helper'
+require './models/month'
+
+describe Month do
+
 end

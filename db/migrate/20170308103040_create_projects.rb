@@ -3,7 +3,7 @@ class CreateProjects < ActiveRecord::Migration[5.0]
     create_table :projects do |t|
       t.string :number
       t.string :name
-      t.date :end_month
+      t.references :month, foreign_key: true
 
       t.timestamps
     end

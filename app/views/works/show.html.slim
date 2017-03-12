@@ -5,7 +5,7 @@
 p
   strong= model_class.human_attribute_name(:user_id) + ':'
   br
-  = @work.user_id
+  = @work.user&.name
 p
   strong= model_class.human_attribute_name(:month) + ':'
   br

@@ -1,8 +1,7 @@
 class Work < ApplicationRecord
-  belongs_to :user
-  belongs_to :month
+  belongs_to :user, required: true
+  belongs_to :month, required: true
 
-  validates :user, presence: true, uniqueness: { scope: :user }
-  validates :month, presence: true
+  validates :user, uniqueness: { scope: :month }
   validates :power, presence: true
 end

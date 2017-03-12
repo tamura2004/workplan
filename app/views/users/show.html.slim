@@ -13,15 +13,15 @@ p
 p
   strong= model_class.human_attribute_name(:rank_id) + ':'
   br
-  = @user.rank_id
+  = @user.rank&.name
 p
   strong= model_class.human_attribute_name(:group_id) + ':'
   br
-  = @user.group_id
+  = @user.group&.name
 p
   strong= model_class.human_attribute_name(:end_month) + ':'
   br
-  = @user.end_month
+  = @user.month&.name
 
 = link_to t('.back', :default => t("helpers.links.back")), users_path, :class => 'btn btn-default'
 '

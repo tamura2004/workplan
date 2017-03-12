@@ -1,7 +1,8 @@
-require 'rails_helper'
+# -*- encoding: utf-8 -*-
 
-RSpec.describe Assign, type: :model do
-  it {
-    expect(Assign.new).not.to be_valid
-  }
+require 'spec_helper'
+require './models/assign'
+
+describe Assign do
+
 end

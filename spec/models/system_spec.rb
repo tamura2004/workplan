@@ -1,5 +1,8 @@
-require 'rails_helper'
+# -*- encoding: utf-8 -*-
 
-RSpec.describe System, type: :model do
-  it { expect(build :system).to be_valid}
+require 'spec_helper'
+require './models/system'
+
+describe System do
+
 end

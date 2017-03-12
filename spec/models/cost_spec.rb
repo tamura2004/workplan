@@ -1,5 +1,8 @@
-require 'rails_helper'
+# -*- encoding: utf-8 -*-
 
-RSpec.describe Cost, type: :model do
-  it { expect(build :cost).to be_valid}
+require 'spec_helper'
+require './models/cost'
+
+describe Cost do
+
 end

@@ -1,5 +1,8 @@
-require 'rails_helper'
+# -*- encoding: utf-8 -*-
 
-RSpec.describe Project, type: :model do
-  it { expect(build :project).to be_valid}
+require 'spec_helper'
+require './models/project'
+
+describe Project do
+
 end

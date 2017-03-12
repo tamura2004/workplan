@@ -12,21 +12,24 @@
 
 ActiveRecord::Schema.define(version: 20170310083729) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "assigns", force: :cascade do |t|
     t.integer  "group_id"
     t.integer  "project_id"
     t.integer  "system_id"
     t.integer  "user_id"
     t.integer  "month_id"
-    t.decimal  "power"
+    t.integer  "power"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_assigns_on_group_id"
-    t.index ["month_id"], name: "index_assigns_on_month_id"
-    t.index ["project_id", "group_id", "system_id", "user_id", "month_id"], name: "assign_index", unique: true
-    t.index ["project_id"], name: "index_assigns_on_project_id"
-    t.index ["system_id"], name: "index_assigns_on_system_id"
-    t.index ["user_id"], name: "index_assigns_on_user_id"
+    t.index ["group_id"], name: "index_assigns_on_group_id", using: :btree
+    t.index ["month_id"], name: "index_assigns_on_month_id", using: :btree
+    t.index ["project_id", "group_id", "system_id", "user_id", "month_id"], name: "assign_index", unique: true, using: :btree
+    t.index ["project_id"], name: "index_assigns_on_project_id", using: :btree
+    t.index ["system_id"], name: "index_assigns_on_system_id", using: :btree
+    t.index ["user_id"], name: "index_assigns_on_user_id", using: :btree
   end
 
   create_table "costs", force: :cascade do |t|
@@ -35,15 +38,15 @@ ActiveRecord::Schema.define(version: 20170310083729) do
     t.integer  "system_id"
     t.integer  "rank_id"
     t.integer  "month_id"
-    t.decimal  "power"
+    t.integer  "power"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_costs_on_group_id"
-    t.index ["month_id"], name: "index_costs_on_month_id"
-    t.index ["project_id", "group_id", "system_id", "rank_id", "month_id"], name: "cost_index", unique: true
-    t.index ["project_id"], name: "index_costs_on_project_id"
-    t.index ["rank_id"], name: "index_costs_on_rank_id"
-    t.index ["system_id"], name: "index_costs_on_system_id"
+    t.index ["group_id"], name: "index_costs_on_group_id", using: :btree
+    t.index ["month_id"], name: "index_costs_on_month_id", using: :btree
+    t.index ["project_id", "group_id", "system_id", "rank_id", "month_id"], name: "cost_index", unique: true, using: :btree
+    t.index ["project_id"], name: "index_costs_on_project_id", using: :btree
+    t.index ["rank_id"], name: "index_costs_on_rank_id", using: :btree
+    t.index ["system_id"], name: "index_costs_on_system_id", using: :btree
   end
 
   create_table "depts", force: :cascade do |t|
@@ -57,7 +60,7 @@ ActiveRecord::Schema.define(version: 20170310083729) do
     t.integer  "dept_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["dept_id"], name: "index_groups_on_dept_id"
+    t.index ["dept_id"], name: "index_groups_on_dept_id", using: :btree
   end
 
   create_table "months", force: :cascade do |t|
@@ -74,18 +77,19 @@ ActiveRecord::Schema.define(version: 20170310083729) do
     t.integer  "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_orders_on_group_id"
-    t.index ["project_id", "group_id", "system_id"], name: "order_index", unique: true
-    t.index ["project_id"], name: "index_orders_on_project_id"
-    t.index ["system_id"], name: "index_orders_on_system_id"
+    t.index ["group_id"], name: "index_orders_on_group_id", using: :btree
+    t.index ["project_id", "group_id", "system_id"], name: "order_index", unique: true, using: :btree
+    t.index ["project_id"], name: "index_orders_on_project_id", using: :btree
+    t.index ["system_id"], name: "index_orders_on_system_id", using: :btree
   end
 
   create_table "projects", force: :cascade do |t|
     t.string   "number"
     t.string   "name"
-    t.date     "end_month"
+    t.integer  "month_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["month_id"], name: "index_projects_on_month_id", using: :btree
   end
 
   create_table "ranks", force: :cascade do |t|
@@ -107,22 +111,43 @@ ActiveRecord::Schema.define(version: 20170310083729) do
     t.string   "name"
     t.integer  "rank_id"
     t.integer  "group_id"
-    t.date     "end_month"
+    t.integer  "month_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_users_on_group_id"
-    t.index ["rank_id"], name: "index_users_on_rank_id"
+    t.index ["group_id"], name: "index_users_on_group_id", using: :btree
+    t.index ["month_id"], name: "index_users_on_month_id", using: :btree
+    t.index ["rank_id"], name: "index_users_on_rank_id", using: :btree
   end
 
   create_table "works", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "month_id"
-    t.decimal  "power"
+    t.integer  "power"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["month_id"], name: "index_works_on_month_id"
-    t.index ["user_id", "month_id"], name: "index_works_on_user_id_and_month_id", unique: true
-    t.index ["user_id"], name: "index_works_on_user_id"
+    t.index ["month_id"], name: "index_works_on_month_id", using: :btree
+    t.index ["user_id", "month_id"], name: "index_works_on_user_id_and_month_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_works_on_user_id", using: :btree
   end
 
+  add_foreign_key "assigns", "groups"
+  add_foreign_key "assigns", "months"
+  add_foreign_key "assigns", "projects"
+  add_foreign_key "assigns", "systems"
+  add_foreign_key "assigns", "users"
+  add_foreign_key "costs", "groups"
+  add_foreign_key "costs", "months"
+  add_foreign_key "costs", "projects"
+  add_foreign_key "costs", "ranks"
+  add_foreign_key "costs", "systems"
+  add_foreign_key "groups", "depts"
+  add_foreign_key "orders", "groups"
+  add_foreign_key "orders", "projects"
+  add_foreign_key "orders", "systems"
+  add_foreign_key "projects", "months"
+  add_foreign_key "users", "groups"
+  add_foreign_key "users", "months"
+  add_foreign_key "users", "ranks"
+  add_foreign_key "works", "months"
+  add_foreign_key "works", "users"
 end

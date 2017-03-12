@@ -1,5 +1,8 @@
-require 'rails_helper'
+# -*- encoding: utf-8 -*-
 
-RSpec.describe Rank, type: :model do
-  it { expect(build :rank).to be_valid}
+require 'spec_helper'
+require './models/rank'
+
+describe Rank do
+
 end

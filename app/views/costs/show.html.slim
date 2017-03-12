@@ -5,19 +5,19 @@
 p
   strong= model_class.human_attribute_name(:group_id) + ':'
   br
-  = @cost.group_id
+  = @cost.group&.name
 p
   strong= model_class.human_attribute_name(:project_id) + ':'
   br
-  = @cost.project_id
+  = @cost.project&.name
 p
   strong= model_class.human_attribute_name(:system_id) + ':'
   br
-  = @cost.system_id
+  = @cost.system&.name
 p
   strong= model_class.human_attribute_name(:rank_id) + ':'
   br
-  = @cost.rank_id
+  = @cost.rank&.name
 p
   strong= model_class.human_attribute_name(:month) + ':'
   br

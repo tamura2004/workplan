@@ -6,7 +6,7 @@ class CreateAssigns < ActiveRecord::Migration[5.0]
       t.references :system, foreign_key: true
       t.references :user, foreign_key: true
       t.references :month, foreign_key: true
-      t.decimal :power
+      t.integer :power
 
       t.timestamps
     end

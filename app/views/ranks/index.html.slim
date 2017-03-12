@@ -6,6 +6,7 @@ table.table.table-striped
     tr
       th= model_class.human_attribute_name(:id)
       th= model_class.human_attribute_name(:name)
+      th= model_class.human_attribute_name(:unit_price)
       th= model_class.human_attribute_name(:created_at)
       th=t '.actions', :default => t("helpers.actions")
   tbody
@@ -13,6 +14,7 @@ table.table.table-striped
       tr
         td= link_to rank.id, rank_path(rank)
         td= rank.name
+        td= rank.unit_price
         td=l rank.created_at
         td
           = link_to t('.show', :default => t("helpers.links.show")), rank_path(rank), :class => 'btn btn-default btn-xs'

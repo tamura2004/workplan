@@ -1,5 +1,8 @@
-require 'rails_helper'
+# -*- encoding: utf-8 -*-
 
-RSpec.describe Order, type: :model do
-  it { expect(build :order).to be_valid}
+require 'spec_helper'
+require './models/order'
+
+describe Order do
+
 end

@@ -1,6 +1,6 @@
 <template lang="pug">
 
-span {{ powerTotalByMonth(month) }}
+span {{ powerTotalByMonth(month) / 100 }}
 
 </template>
 

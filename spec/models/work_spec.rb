@@ -1,5 +1,8 @@
-require 'rails_helper'
+# -*- encoding: utf-8 -*-
 
-RSpec.describe Work, type: :model do
-  it { expect(build :work).to be_valid}
+require 'spec_helper'
+require './models/work'
+
+describe Work do
+
 end
