@@ -2,10 +2,10 @@
 
 one:
   user: one
-  month: 2017-03-08
+  month: one
   power: 9.99
 
 two:
   user: two
-  month: 2017-03-08
+  month: two
   power: 9.99

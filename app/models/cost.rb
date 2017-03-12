@@ -3,4 +3,11 @@ class Cost < ApplicationRecord
   belongs_to :project
   belongs_to :system
   belongs_to :rank
+  belongs_to :month
+
+  validates :group, presence: true
+  validates :project, presence: true
+  validates :system, presence: true
+  validates :rank, presence: true
+  validates :month, presence: true
 end

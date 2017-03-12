@@ -4,7 +4,7 @@ class WorksController < ApplicationController
   # GET /works
   # GET /works.json
   def index
-    @works = Work.all
+    @works = Work.all.order(:user_id, :month_id)
   end
 
   # GET /works/1
@@ -69,6 +69,6 @@ class WorksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def work_params
-      params.require(:work).permit(:user_id, :month, :power)
+      params.require(:work).permit(:user_id, :month_id, :power)
     end
 end

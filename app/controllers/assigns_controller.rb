@@ -69,6 +69,6 @@ class AssignsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assign_params
-      params.require(:assign).permit(:group_id, :project_id, :system_id, :user_id, :month, :power)
+      params.require(:assign).permit(:group_id, :project_id, :system_id, :user_id, :month_id, :power)
     end
 end

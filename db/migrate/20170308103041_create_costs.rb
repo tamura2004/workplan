@@ -10,5 +10,7 @@ class CreateCosts < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+
+    add_index :costs, [:project_id, :group_id, :system_id, :rank_id, :month_id], unique: true, name: 'cost_index'
   end
 end

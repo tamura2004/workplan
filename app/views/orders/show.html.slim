@@ -1,18 +1,26 @@
-p#notice = notice
+- model_class = Order
+.page-header
+  h1=t '.title', :default => model_class.model_name.human.titleize
 
 p
-  strong Project:
-  = @order.project
+  strong= model_class.human_attribute_name(:project_id) + ':'
+  br
+  = @order.project_id
 p
-  strong Group:
-  = @order.group
+  strong= model_class.human_attribute_name(:group_id) + ':'
+  br
+  = @order.group_id
 p
-  strong System:
-  = @order.system
+  strong= model_class.human_attribute_name(:system_id) + ':'
+  br
+  = @order.system_id
 p
-  strong Price:
+  strong= model_class.human_attribute_name(:price) + ':'
+  br
   = @order.price
 
-= link_to 'Edit', edit_order_path(@order)
-'  |
-= link_to 'Back', orders_path
+= link_to t('.back', :default => t("helpers.links.back")), orders_path, :class => 'btn btn-default'
+'
+= link_to t('.edit', :default => t("helpers.links.edit")), edit_order_path(@order), :class => 'btn btn-default'
+'
+= link_to t('.destroy', :default => t("helpers.links.destroy")), order_path(@order), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

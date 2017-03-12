@@ -17,7 +17,7 @@ class AssignsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create assign" do
     assert_difference('Assign.count') do
-      post assigns_url, params: { assign: { group_id: @assign.group_id, month: @assign.month, power: @assign.power, project_id: @assign.project_id, system_id: @assign.system_id, user_id: @assign.user_id } }
+      post assigns_url, params: { assign: { group_id: @assign.group_id, month_id: @assign.month_id, power: @assign.power, project_id: @assign.project_id, system_id: @assign.system_id, user_id: @assign.user_id } }
     end
 
     assert_redirected_to assign_url(Assign.last)
@@ -34,7 +34,7 @@ class AssignsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update assign" do
-    patch assign_url(@assign), params: { assign: { group_id: @assign.group_id, month: @assign.month, power: @assign.power, project_id: @assign.project_id, system_id: @assign.system_id, user_id: @assign.user_id } }
+    patch assign_url(@assign), params: { assign: { group_id: @assign.group_id, month_id: @assign.month_id, power: @assign.power, project_id: @assign.project_id, system_id: @assign.system_id, user_id: @assign.user_id } }
     assert_redirected_to assign_url(@assign)
   end
 

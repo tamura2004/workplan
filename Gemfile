@@ -53,8 +53,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "slim-rails"
-# gem "less-rails"
-# gem "therubyracer"
+gem "less-rails"
+gem "therubyracer"
 gem "execjs"
 gem "twitter-bootstrap-rails"
 gem "simple_form"
@@ -63,4 +63,20 @@ group :development do
   gem "pry-rails"
   gem "gimei"
   gem "seed-fu"
+end
+
+group :development, :test do
+  gem "rspec-rails"
+  gem "factory_girl_rails"
+  gem "rails-controller-testing"
+end
+
+group :test do
+  gem "faker"
+  gem "capybara"
+  gem "database_cleaner"
+  gem "launchy"
+  gem "selenium-webdriver"
+  gem "simplecov"
+  gem "rspec-request_describer"
 end

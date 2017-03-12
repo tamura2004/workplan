@@ -6,7 +6,7 @@ table.table.table-striped
     tr
       th= model_class.human_attribute_name(:id)
       th= model_class.human_attribute_name(:user_id)
-      th= model_class.human_attribute_name(:month)
+      th= model_class.human_attribute_name(:month_id)
       th= model_class.human_attribute_name(:power)
       th= model_class.human_attribute_name(:created_at)
       th=t '.actions', :default => t("helpers.actions")
@@ -14,8 +14,8 @@ table.table.table-striped
     - @works.each do |work|
       tr
         td= link_to work.id, work_path(work)
-        td= work.user_id
-        td= work.month
+        td= work.user&.name
+        td= work.month&.name
         td= work.power
         td=l work.created_at
         td

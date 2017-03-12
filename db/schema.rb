@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20170310083729) do
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_assigns_on_group_id"
     t.index ["month_id"], name: "index_assigns_on_month_id"
+    t.index ["project_id", "group_id", "system_id", "user_id", "month_id"], name: "assign_index", unique: true
     t.index ["project_id"], name: "index_assigns_on_project_id"
     t.index ["system_id"], name: "index_assigns_on_system_id"
     t.index ["user_id"], name: "index_assigns_on_user_id"
@@ -39,6 +40,7 @@ ActiveRecord::Schema.define(version: 20170310083729) do
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_costs_on_group_id"
     t.index ["month_id"], name: "index_costs_on_month_id"
+    t.index ["project_id", "group_id", "system_id", "rank_id", "month_id"], name: "cost_index", unique: true
     t.index ["project_id"], name: "index_costs_on_project_id"
     t.index ["rank_id"], name: "index_costs_on_rank_id"
     t.index ["system_id"], name: "index_costs_on_system_id"
@@ -51,8 +53,8 @@ ActiveRecord::Schema.define(version: 20170310083729) do
   end
 
   create_table "groups", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "dept_id"
+    t.string   "name",       null: false
+    t.integer  "dept_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["dept_id"], name: "index_groups_on_dept_id"
@@ -69,10 +71,11 @@ ActiveRecord::Schema.define(version: 20170310083729) do
     t.integer  "project_id"
     t.integer  "group_id"
     t.integer  "system_id"
-    t.string   "price"
+    t.integer  "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_orders_on_group_id"
+    t.index ["project_id", "group_id", "system_id"], name: "order_index", unique: true
     t.index ["project_id"], name: "index_orders_on_project_id"
     t.index ["system_id"], name: "index_orders_on_system_id"
   end
@@ -103,9 +106,11 @@ ActiveRecord::Schema.define(version: 20170310083729) do
     t.string   "number"
     t.string   "name"
     t.integer  "rank_id"
+    t.integer  "group_id"
     t.date     "end_month"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_users_on_group_id"
     t.index ["rank_id"], name: "index_users_on_rank_id"
   end
 
@@ -116,6 +121,7 @@ ActiveRecord::Schema.define(version: 20170310083729) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["month_id"], name: "index_works_on_month_id"
+    t.index ["user_id", "month_id"], name: "index_works_on_user_id_and_month_id", unique: true
     t.index ["user_id"], name: "index_works_on_user_id"
   end
 

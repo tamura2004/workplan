@@ -7,5 +7,7 @@ class CreateWorks < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+
+    add_index :works, [:user_id, :month_id], unique: true
   end
 end

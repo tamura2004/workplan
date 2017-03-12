@@ -17,11 +17,11 @@ table.table.table-striped
     - @costs.each do |cost|
       tr
         td= link_to cost.id, cost_path(cost)
-        td= cost.group_id
-        td= cost.project_id
-        td= cost.system_id
-        td= cost.rank_id
-        td= cost.month
+        td= cost.group&.name
+        td= cost.project&.name
+        td= cost.system&.name
+        td= cost.rank&.name
+        td= cost.month&.name
         td= cost.power
         td=l cost.created_at
         td

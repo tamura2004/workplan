@@ -5,7 +5,7 @@ one:
   project: one
   system: one
   user: one
-  month: 2017-03-08
+  month: one
   power: 9.99
 
 two:
@@ -13,5 +13,5 @@ two:
   project: two
   system: two
   user: two
-  month: 2017-03-08
+  month: two
   power: 9.99

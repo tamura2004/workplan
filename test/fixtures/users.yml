@@ -4,10 +4,12 @@ one:
   number: MyString
   name: MyString
   rank: one
+  group: one
   end_month: 2017-03-08
 
 two:
   number: MyString
   name: MyString
   rank: two
+  group: rwo
   end_month: 2017-03-08

@@ -10,5 +10,8 @@ class CreateAssigns < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+
+    add_index :assigns, [:project_id, :group_id, :system_id, :user_id, :month_id], unique: true, name: 'assign_index'
+
   end
 end

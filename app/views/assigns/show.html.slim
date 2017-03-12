@@ -5,23 +5,25 @@
 p
   strong= model_class.human_attribute_name(:group_id) + ':'
   br
-  = @assign.group_id
+  = @assign.group&.name
 p
   strong= model_class.human_attribute_name(:project_id) + ':'
   br
-  = @assign.project_id
+  = @assign.project&.number
+  = @assign.project&.name
 p
   strong= model_class.human_attribute_name(:system_id) + ':'
   br
-  = @assign.system_id
+  = @assign.system&.number
+  = @assign.system&.name
 p
   strong= model_class.human_attribute_name(:user_id) + ':'
   br
-  = @assign.user_id
+  = @assign.user&.name
 p
   strong= model_class.human_attribute_name(:month) + ':'
   br
-  = @assign.month
+  = @assign.month&.name
 p
   strong= model_class.human_attribute_name(:power) + ':'
   br

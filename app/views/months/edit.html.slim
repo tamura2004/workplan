@@ -1,8 +1,4 @@
-h1 Editing month
-
-== render 'form'
-
-= link_to 'Show', @month
-'  |
-= link_to 'Back', months_path
-
+- model_class = Month
+.page-header
+  h1=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize
+= render :partial => "form"

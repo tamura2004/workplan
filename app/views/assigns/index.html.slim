@@ -9,7 +9,7 @@ table.table.table-striped
       th= model_class.human_attribute_name(:project_id)
       th= model_class.human_attribute_name(:system_id)
       th= model_class.human_attribute_name(:user_id)
-      th= model_class.human_attribute_name(:month)
+      th= model_class.human_attribute_name(:month_id)
       th= model_class.human_attribute_name(:power)
       th= model_class.human_attribute_name(:created_at)
       th=t '.actions', :default => t("helpers.actions")
@@ -17,11 +17,11 @@ table.table.table-striped
     - @assigns.each do |assign|
       tr
         td= link_to assign.id, assign_path(assign)
-        td= assign.group_id
-        td= assign.project_id
-        td= assign.system_id
-        td= assign.user_id
-        td= assign.month
+        td= assign.group&.name
+        td= assign.project&.name
+        td= assign.system&.name
+        td= assign.user&.name
+        td= assign.month&.name
         td= assign.power
         td=l assign.created_at
         td

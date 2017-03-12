@@ -15,6 +15,10 @@ p
   br
   = @user.rank_id
 p
+  strong= model_class.human_attribute_name(:group_id) + ':'
+  br
+  = @user.group_id
+p
   strong= model_class.human_attribute_name(:end_month) + ':'
   br
   = @user.end_month
