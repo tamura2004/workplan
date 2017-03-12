@@ -12,7 +12,7 @@ input.form-control(
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import { CHANGE_WORK } from '@/vuex/mutation-types'
-import moveWithArrowKey from '@/components/moveWithArrowKey'
+import moveWithArrowKey from '@/lib/moveWithArrowKey'
 
 export default {
   name: 'Power',
@@ -20,6 +20,7 @@ export default {
   methods: {
     ...mapActions([CHANGE_WORK]),
     handleKeydown (e) {
+      console.log(e)
       moveWithArrowKey(e, this.cellId)
     }
   },
