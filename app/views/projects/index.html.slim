@@ -16,7 +16,7 @@ table.table.table-striped
         td= link_to project.id, project_path(project)
         td= project.number
         td= project.name
-        td= user.month&.date&.strftime("%Y/%m")
+        td= project.month&.date&.strftime("%Y/%m")
         td=l project.created_at
         td
           = link_to t('.show', :default => t("helpers.links.show")), project_path(project), :class => 'btn btn-default btn-xs'

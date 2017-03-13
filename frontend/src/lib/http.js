@@ -8,7 +8,8 @@ const http = axios.create()
 export function get (type) {
   const model = type.split('_')[1].toLowerCase()
   return ({commit}) => {
-    http.get(`http://localhost:3000/${model}.json`)
+    // http.get(`http://localhost:3000/${model}.json`)
+    http.get(`/api/${model}.json`)
     .then(r => commit(type, r.data))
     .catch(e => console.log(e))
   }

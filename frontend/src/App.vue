@@ -10,18 +10,18 @@
   .row
     .col-2
       b-dropdown(text="マスター管理")
-        a.dropdown-item(href='http://localhost:3000/depts') 部
-        a.dropdown-item(href='http://localhost:3000/ranks') ランク
-        a.dropdown-item(href='http://localhost:3000/groups') グループ
-        a.dropdown-item(href='http://localhost:3000/users') 担当者
-        a.dropdown-item(href='http://localhost:3000/systems') システム
-        a.dropdown-item(href='http://localhost:3000/projects') プロジェクト
+        a.dropdown-item(href='/api/depts') 部
+        a.dropdown-item(href='/api/ranks') ランク
+        a.dropdown-item(href='/api/groups') グループ
+        a.dropdown-item(href='/api/users') 担当者
+        a.dropdown-item(href='/api/systems') システム
+        a.dropdown-item(href='/api/projects') プロジェクト
 
       b-dropdown(text="データ補正")
-        a.dropdown-item(href='http://localhost:3000/works') 要員計画
-        a.dropdown-item(href='http://localhost:3000/orders') 発注情報
-        a.dropdown-item(href='http://localhost:3000/costs') 開発計画
-        a.dropdown-item(href='http://localhost:3000/assigns') アサイン
+        a.dropdown-item(href='/api/works') 要員計画
+        a.dropdown-item(href='/api/orders') 発注情報
+        a.dropdown-item(href='/api/costs') 開発計画
+        a.dropdown-item(href='/api/assigns') アサイン
 
     .col-10
       router-view

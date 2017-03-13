@@ -39,11 +39,11 @@ gem "therubyracer"
 gem "execjs"
 gem "twitter-bootstrap-rails"
 gem "simple_form"
+gem "seed-fu"
 
 group :development do
   gem "pry-rails"
   gem "gimei"
-  gem "seed-fu"
 end
 
 group :development, :test do

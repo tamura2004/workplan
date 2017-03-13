@@ -1,8 +1,6 @@
 = simple_form_for @month, :html => { :class => "form-horizontal" } do |f|
   = f.input :name
-  = error_span(@month[:name])
   = f.input :date
-  = error_span(@month[:date])
   = f.button :submit, :class => 'btn-primary'
   '
   = link_to t('.cancel', :default => t("helpers.links.cancel")), months_path, :class => 'btn btn-default'

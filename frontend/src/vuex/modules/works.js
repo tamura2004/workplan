@@ -7,6 +7,7 @@ import {
 } from '../mutation-types'
 
 import { get } from '@/lib/http'
+import axios from 'axios'
 
 // initial state
 const state = {
@@ -54,22 +55,46 @@ const getters = {
 // actions
 const actions = {
   [LOAD_WORKS]: get(LOAD_WORKS),
-  [CHANGE_WORK] ({commit, getters}, [user, month, power]) {
+  [CHANGE_WORK] ({commit, getters, dispatch}, [user, month, power]) {
     const work = getters.work(user, month)
 
-    if (typeof power === 'number') {
+    if (typeof power === 'number' && power > 0) {
       if (work == null) {
-        commit(CREATE_WORK, [user, month, power])
+        dispatch(CREATE_WORK, [user, month, power])
       } else {
-        commit(UPDATE_WORK, [work, power])
+        dispatch(UPDATE_WORK, [work, power])
       }
     } else {
       if (work == null) {
         // nothing to do
       } else {
-        commit(DELETE_WORK, work)
+        dispatch(DELETE_WORK, work)
       }
     }
+  },
+  [CREATE_WORK] ({commit}, [user, month, power]) {
+    axios.post('/api/works.json', {
+      work: {
+        user_id: user.id,
+        month_id: month.id,
+        power: power
+      }
+    })
+    .then(r => commit(CREATE_WORK, r.data))
+    .catch(e => console.log(e))
+  },
+  [UPDATE_WORK] ({commit}, [work, power]) {
+    const params = {
+      work: Object.assign({}, work, {power: power})
+    }
+    axios.patch(`/api/works/${work.id}.json`, params)
+    .then(r => commit(UPDATE_WORK, [work, power]))
+    .catch(e => console.log(e))
+  },
+  [DELETE_WORK] ({commit}, work) {
+    axios.delete(`/api/works/${work.id}.json`)
+    .then(r => commit(DELETE_WORK, work))
+    .catch(e => console.log(e))
   }
 }
 
@@ -81,20 +106,8 @@ const mutations = {
   [UPDATE_WORK] (state, [work, power]) {
     work.power = power
   },
-  [CREATE_WORK] (state, [user, month, power]) {
-    let id = null
-    for (const work of state.works) {
-      if (id < work.id) {
-        id = work.id
-      }
-    }
-    id++
-    state.works.push({
-      id: id,
-      user_id: user.id,
-      month_id: month.id,
-      power: power
-    })
+  [CREATE_WORK] (state, work) {
+    state.works.push(work)
   },
   [DELETE_WORK] (state, work) {
     state.works.some((w, i) => {

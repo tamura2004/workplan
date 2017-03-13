@@ -7,6 +7,26 @@ class WorksController < ApplicationController
     @works = Work.all.order(:user_id, :month_id)
   end
 
+  def chart
+    ranks = Rank.order(:id)
+    months = Month.order(:date).where(date: (1.months.ago)..(12.months.since))
+
+    @datasets = ranks.map do |rank|
+      {
+        label: rank.name,
+        data: months.map { |month|
+          month.works.select { |work|
+            work.user.rank_id = rank.id
+          }.inject(0){ |a, work|
+            a += work.power
+          } / 100
+        }
+      }
+    end
+
+    render json: @datasets
+  end
+
   # GET /works/1
   # GET /works/1.json
   def show

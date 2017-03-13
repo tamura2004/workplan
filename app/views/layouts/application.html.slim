@@ -22,24 +22,24 @@ html lang="en"
     = nav_bar fixed: :top, brand: "WorkPlan" do
       = menu_group
         = drop_down "マスター管理"
-          = menu_item '部', '/depts'
-          = menu_item 'ランク', '/ranks'
-          = menu_item 'グループ', '/groups'
-          = menu_item '担当者', '/users'
-          = menu_item 'システム', '/systems'
-          = menu_item 'プロジェクト', '/projects'
+          = menu_item '部', depts_path
+          = menu_item 'ランク', ranks_path
+          = menu_item 'グループ', groups_path
+          = menu_item '担当者', users_path
+          = menu_item 'システム', systems_path
+          = menu_item 'プロジェクト', projects_path
           
         = drop_down "月別入力"
-          = menu_item '要員計画', 'http://localhost:8080/works'
-          = menu_item '発注情報', 'http://localhost:8080/works'
-          = menu_item '開発計画', 'http://localhost:8080/works'
-          = menu_item 'アサイン', 'http://localhost:8080/works'
+          = menu_item '要員計画', '/works/'
+          = menu_item '発注情報', '/works/'
+          = menu_item '開発計画', '/works/'
+          = menu_item 'アサイン', '/works/'
 
         = drop_down "データ補正"
-          = menu_item '要員計画', '/works'
-          = menu_item '発注情報', '/orders'
-          = menu_item '開発計画', '/costs'
-          = menu_item 'アサイン', '/assigns'
+          = menu_item '要員計画', works_path
+          = menu_item '発注情報', orders_path
+          = menu_item '開発計画', costs_path
+          = menu_item 'アサイン', assigns_path
 
     .container#app
       = bootstrap_flash

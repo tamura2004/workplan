@@ -3,7 +3,7 @@
   = f.input :name
   = f.association :rank
   = f.association :group
-  = f.association :month, label: "終了月"
+  = f.association :month, label: "終了月", label_method: :date, selected: 23
   = f.button :submit, :class => 'btn-primary'
   '
   = link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => 'btn btn-default'
