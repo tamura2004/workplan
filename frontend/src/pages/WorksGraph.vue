@@ -5,48 +5,43 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'WorksGraph',
   created () {
     console.log('created')
   },
+  computed: mapGetters(['months', 'ranks', 'users', 'works']),
   mounted () {
-    console.log('mounted')
-    console.log(document.getElementById('chartContainer'))
-
-    const chart = new document.CanvasJS.Chart('chartContainer', {
-      theme: 'theme4',
+    var chart = new window.CanvasJS.Chart('chartContainer', {
       title: {
-        text: '要員計画'
+        text: '要員計画',
+        margin: 15
       },
-      animationEnabled: true,
-      data: [
-        {
-          type: 'line',
-          lineThickness: 4,
-          markerSize: 12,
-          legendText: 'one',
-          dataPoints: [1, 3, 2]
-        },
-        {
-          type: 'line',
-          lineThickness: 4,
-          markerSize: 12,
-          legendText: 'two',
-          dataPoints: [3, 2, 1]
-        },
-        {
-          type: 'line',
-          lineThickness: 4,
-          markerSize: 12,
-          legendText: 'three',
-          dataPoints: [2, 1, 3]
+      toolTip: {
+        shared: true
+      },
+      axisX: {
+        valueFormatString: 'MM月',
+        interval: 1,
+        intervalType: 'month'
+      },
+      axisY: {
+        maximum: 40,
+        interval: 10
+      },
+      data: ['alice', 'bob', 'chris'].map(name => {
+        return {
+          type: 'stackedArea',
+          name: name,
+          showInLegend: 'true',
+          dataPoints: this.months.map(m => {
+            return { x: m.date, y: 11 }
+          })
         }
-      ]
+      })
     })
-
-    console.log(chart)
     chart.render()
   }
 }

@@ -15,6 +15,7 @@
   "dependencies": {
     "axios": "^0.15.3",
     "bootstrap-vue": "^0.9.5",
+    "canvasjs": "^1.8.1",
     "core-js": "^2.4.1",
     "moment": "^2.17.1",
     "pug": "^2.0.0-beta11",

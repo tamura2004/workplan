@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Works from '@/pages/Works'
-import WorksGraph from '@/pages/WorksGraph'
+import Assigns from '@/pages/Assigns'
 
 Vue.use(Router)
 
@@ -14,8 +14,8 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'WorksGraph',
-      component: WorksGraph
+      name: 'Assigns',
+      component: Assigns
     }
   ]
 })

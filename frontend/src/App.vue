@@ -7,29 +7,35 @@
     crossorigin="anonymous"
   )
 
-  .row
-    .col-2
-      b-dropdown(text="マスター管理")
-        a.dropdown-item(href='/api/depts') 部
-        a.dropdown-item(href='/api/ranks') ランク
-        a.dropdown-item(href='/api/groups') グループ
-        a.dropdown-item(href='/api/users') 担当者
-        a.dropdown-item(href='/api/systems') システム
-        a.dropdown-item(href='/api/projects') プロジェクト
+  .container
+    .row
+      SelectProject
 
-      b-dropdown(text="データ補正")
-        a.dropdown-item(href='/api/works') 要員計画
-        a.dropdown-item(href='/api/orders') 発注情報
-        a.dropdown-item(href='/api/costs') 開発計画
-        a.dropdown-item(href='/api/assigns') アサイン
-
-    .col-10
+    .row
       router-view
+
+    .row
+      .col-2
+        b-dropdown(text="マスター管理")
+          a.dropdown-item(href='/api/depts') 部
+          a.dropdown-item(href='/api/ranks') ランク
+          a.dropdown-item(href='/api/groups') グループ
+          a.dropdown-item(href='/api/users') 担当者
+          a.dropdown-item(href='/api/systems') システム
+          a.dropdown-item(href='/api/projects') プロジェクト
+
+      .col-2
+        b-dropdown(text="データ補正")
+          a.dropdown-item(href='/api/works') 要員計画
+          a.dropdown-item(href='/api/orders') 発注情報
+          a.dropdown-item(href='/api/costs') 開発計画
+          a.dropdown-item(href='/api/assigns') アサイン
+
 
 </template>
 
 <script>
-import { LOAD_USERS, LOAD_RANKS, LOAD_MONTHS } from '@/vuex/mutation-types'
+import { LOAD_USERS, LOAD_RANKS, LOAD_MONTHS, LOAD_PROJECTS } from '@/vuex/mutation-types'
 
 export default {
   name: 'app',
@@ -37,6 +43,7 @@ export default {
     this.$store.dispatch(LOAD_USERS)
     this.$store.dispatch(LOAD_RANKS)
     this.$store.dispatch(LOAD_MONTHS)
+    this.$store.dispatch(LOAD_PROJECTS)
   }
 }
 </script>

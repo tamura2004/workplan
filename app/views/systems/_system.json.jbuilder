@@ -1,2 +1,1 @@
-json.extract! system, :id, :number, :name, :created_at, :updated_at
-json.url system_url(system, format: :json)
+json.extract! system, :id, :number, :name
