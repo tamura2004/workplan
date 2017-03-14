@@ -2,6 +2,7 @@ export const LOAD_USERS = 'LOAD_USERS'
 export const LOAD_RANKS = 'LOAD_RANKS'
 export const LOAD_MONTHS = 'LOAD_MONTHS'
 export const LOAD_PROJECTS = 'LOAD_PROJECTS'
+export const LOAD_ORDERS = 'LOAD_ORDERS'
 
 export const SET_PROJECT = 'SET_PROJECT'
 

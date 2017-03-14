@@ -4,7 +4,7 @@ class AssignsController < ApplicationController
   # GET /assigns
   # GET /assigns.json
   def index
-    @assigns = Assign.all
+    @assigns = Assign.all.sort_by{ |a| [a.order.sortkey, a.user.number, a.month.date] }
   end
 
   # GET /assigns/1
@@ -69,6 +69,6 @@ class AssignsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assign_params
-      params.require(:assign).permit(:group_id, :project_id, :system_id, :user_id, :month_id, :power)
+      params.require(:assign).permit(:order_id, :user_id, :month_id, :power)
     end
 end

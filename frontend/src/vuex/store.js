@@ -13,7 +13,8 @@ import {
   LOAD_USERS,
   LOAD_RANKS,
   LOAD_MONTHS,
-  LOAD_PROJECTS
+  LOAD_PROJECTS,
+  LOAD_ORDERS
 } from './mutation-types'
 
 const state = {
@@ -29,14 +30,16 @@ const getters = {
   projects: state => state.projects,
   ranks: state => state.ranks,
   users: state => state.users,
-  months: state => state.months.filter(m => m.id < 12)
+  months: state => state.months.filter(m => m.id < 12),
+  orders: state => state.orders
 }
 
 const actions = {
   [LOAD_USERS]: get(LOAD_USERS),
   [LOAD_RANKS]: get(LOAD_RANKS),
   [LOAD_MONTHS]: get(LOAD_MONTHS),
-  [LOAD_PROJECTS]: get(LOAD_PROJECTS)
+  [LOAD_PROJECTS]: get(LOAD_PROJECTS),
+  [LOAD_ORDERS]: get(LOAD_ORDERS)
 }
 
 const mutations = {
@@ -51,7 +54,8 @@ const mutations = {
       month.date = new Date(month.date)
       state.months.push(month)
     }
-  }
+  },
+  [LOAD_ORDERS]: load(LOAD_ORDERS)
 }
 
 const debug = process.env.NODE_ENV !== 'production'

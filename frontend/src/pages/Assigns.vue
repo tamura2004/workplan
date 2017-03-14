@@ -47,6 +47,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="stylus" scoped>
+table
+  font-size 80%
 // number, name
 for col in 1
   th:nth-child({col})

@@ -1,10 +1,3 @@
-// t.integer  "group_id"
-// t.integer  "project_id"
-// t.integer  "system_id"
-// t.integer  "user_id"
-// t.integer  "month_id"
-// t.integer  "power"
-
 import {
   LOAD_ASSIGNS,
   CHANGE_ASSIGN,

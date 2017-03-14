@@ -8,8 +8,8 @@ table.table.table-striped
       th= model_class.human_attribute_name(:project_id)
       th= model_class.human_attribute_name(:group_id)
       th= model_class.human_attribute_name(:system_id)
-      th= model_class.human_attribute_name(:price)
-      th= model_class.human_attribute_name(:created_at)
+      th 受注価格(円)
+      th 更新日時
       th=t '.actions', :default => t("helpers.actions")
   tbody
     - @orders.each do |order|
@@ -18,7 +18,7 @@ table.table.table-striped
         td= order.project&.name
         td= order.group&.name
         td= order.system&.name
-        td= order.price
+        td= order.price.to_s(:delimited)
         td=l order.created_at
         td
           = link_to t('.show', :default => t("helpers.links.show")), order_path(order), :class => 'btn btn-default btn-xs'

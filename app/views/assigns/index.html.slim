@@ -5,25 +5,19 @@ table.table.table-striped
   thead
     tr
       th= model_class.human_attribute_name(:id)
-      th= model_class.human_attribute_name(:group_id)
-      th= model_class.human_attribute_name(:project_id)
-      th= model_class.human_attribute_name(:system_id)
+      th= model_class.human_attribute_name(:order_id)
       th= model_class.human_attribute_name(:user_id)
       th= model_class.human_attribute_name(:month_id)
       th= model_class.human_attribute_name(:power)
-      th= model_class.human_attribute_name(:created_at)
       th=t '.actions', :default => t("helpers.actions")
   tbody
     - @assigns.each do |assign|
       tr
         td= link_to assign.id, assign_path(assign)
-        td= assign.group&.name
-        td= assign.project&.name
-        td= assign.system&.name
+        td= assign.order&.name
         td= assign.user&.name
         td= assign.month&.name
         td= assign.power
-        td=l assign.created_at
         td
           = link_to t('.show', :default => t("helpers.links.show")), assign_path(assign), :class => 'btn btn-default btn-xs'
           '

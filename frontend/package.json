@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
-    "bootstrap-vue": "^0.9.5",
     "canvasjs": "^1.8.1",
     "core-js": "^2.4.1",
     "moment": "^2.17.1",
@@ -23,7 +22,7 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "vue": "^2.2.1",
-    "vue-chartjs": "^2.5.1",
+    "vue-handsontable": "^0.0.2",
     "vue-router": "^2.2.0",
     "vue2-filters": "^0.1.7",
     "vuex": "^2.2.1"

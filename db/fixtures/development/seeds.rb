@@ -84,9 +84,9 @@ params.each_with_index do |arr, id|
   end
 end
 
-params = 20.times.map{
+params = 100.times.map{
   [rand(10), rand(4), rand(10)]
-}.uniq
+}.uniq.sample(50)
 
 params.each_with_index do |arr, id|
   project_id, group_id, system_id = *arr
@@ -100,16 +100,14 @@ params.each_with_index do |arr, id|
 end
 
 params = 100.times.map{
-  [rand(4), rand(10), rand(10), rand(5), rand(12)]
+  [rand(50), rand(5), rand(12)]
 }.uniq
 
 params.each_with_index do |arr, id|
-  group_id, project_id, system_id, rank_id, month_id = *arr
+  order_id, rank_id, month_id = *arr
   Cost.seed do |s|
     s.id = id
-    s.group_id = group_id
-    s.project_id = project_id
-    s.system_id = system_id
+    s.order_id = order_id
     s.rank_id = rank_id
     s.month_id = month_id
     s.power = rand(30) * 10 + 10
@@ -117,16 +115,14 @@ params.each_with_index do |arr, id|
 end
 
 params = 100.times.map{
-  [rand(4), rand(10), rand(10), rand(20), rand(12)]
+  [rand(50), rand(20), rand(12)]
 }.uniq
 
 params.each_with_index do |arr, id|
-  group_id, project_id, system_id, user_id, month_id = *arr
+  order_id, user_id, month_id = *arr
   Assign.seed do |s|
     s.id = id
-    s.group_id = group_id
-    s.project_id = project_id
-    s.system_id = system_id
+    s.order_id = order_id
     s.user_id = user_id
     s.month_id = month_id
     s.power = rand(30) * 10 + 10

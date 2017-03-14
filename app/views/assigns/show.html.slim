@@ -1,21 +1,10 @@
 - model_class = Assign
 .page-header
   h1=t '.title', :default => model_class.model_name.human.titleize
-
 p
-  strong= model_class.human_attribute_name(:group_id) + ':'
+  strong= model_class.human_attribute_name(:order_id) + ':'
   br
-  = @assign.group&.name
-p
-  strong= model_class.human_attribute_name(:project_id) + ':'
-  br
-  = @assign.project&.number
-  = @assign.project&.name
-p
-  strong= model_class.human_attribute_name(:system_id) + ':'
-  br
-  = @assign.system&.number
-  = @assign.system&.name
+  = @assign.order&.name
 p
   strong= model_class.human_attribute_name(:user_id) + ':'
   br

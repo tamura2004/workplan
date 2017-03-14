@@ -1,41 +1,56 @@
 <template lang="pug">
 #app
-  link(
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css",
-    rel="stylesheet",
-    integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ",
-    crossorigin="anonymous"
-  )
+  //- nav.navbar.navbar-toggleable-md.navbar-light.fixed-top.bg-faded
+  nav.navbar.navbar-toggleable-md.navbar-inverse.fixed-top.bg-inverse
+    button.navbar-toggler.navbar-toggler-right(
+      type='button',
+      data-toggle='collapse',
+      data-target='#navbarsExampleDefault',
+      aria-controls='navbarsExampleDefault',
+      aria-expanded='false',
+      aria-label='Toggle navigation'
+    )
+      span.navbar-toggler-icon
+    a.navbar-brand(href='#') WorkPlan
+    #navbarsExampleDefault.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto
+
+        li.nav-item.dropdown
+          a#dropdown01.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') マスター管理
+          .dropdown-menu(aria-labelledby='dropdown01')
+            a.dropdown-item(href='/api/depts') 部
+            a.dropdown-item(href='/api/ranks') ランク
+            a.dropdown-item(href='/api/groups') グループ
+            a.dropdown-item(href='/api/users') 担当者
+            a.dropdown-item(href='/api/systems') システム
+            a.dropdown-item(href='/api/projects') プロジェクト
+            a.dropdown-item(href='/api/orders') 発注情報
+
+        li.nav-item.dropdown
+          a#dropdown01.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') 月別入力
+          .dropdown-menu(aria-labelledby='dropdown01')
+            a.dropdown-item(href='/#/works') 要員計画
+            a.dropdown-item(href='/#/costs') 開発計画
+            a.dropdown-item(href='/#/assigns') アサイン
+
+        li.nav-item.dropdown
+          a#dropdown01.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') データ補正
+          .dropdown-menu(aria-labelledby='dropdown01')
+            a.dropdown-item(href='/api/works') 要員計画
+            a.dropdown-item(href='/api/costs') 開発計画
+            a.dropdown-item(href='/api/assigns') アサイン
+
+      form.form-inline.my-2.my-lg-0
+        input.form-control.mr-sm-2(type='text', placeholder='Search')
+        button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
 
   .container
-    .row
-      SelectProject
-
-    .row
-      router-view
-
-    .row
-      .col-2
-        b-dropdown(text="マスター管理")
-          a.dropdown-item(href='/api/depts') 部
-          a.dropdown-item(href='/api/ranks') ランク
-          a.dropdown-item(href='/api/groups') グループ
-          a.dropdown-item(href='/api/users') 担当者
-          a.dropdown-item(href='/api/systems') システム
-          a.dropdown-item(href='/api/projects') プロジェクト
-
-      .col-2
-        b-dropdown(text="データ補正")
-          a.dropdown-item(href='/api/works') 要員計画
-          a.dropdown-item(href='/api/orders') 発注情報
-          a.dropdown-item(href='/api/costs') 開発計画
-          a.dropdown-item(href='/api/assigns') アサイン
-
+    router-view
 
 </template>
 
 <script>
-import { LOAD_USERS, LOAD_RANKS, LOAD_MONTHS, LOAD_PROJECTS } from '@/vuex/mutation-types'
+import { LOAD_USERS, LOAD_RANKS, LOAD_MONTHS, LOAD_PROJECTS, LOAD_ORDERS } from '@/vuex/mutation-types'
 
 export default {
   name: 'app',
@@ -44,6 +59,7 @@ export default {
     this.$store.dispatch(LOAD_RANKS)
     this.$store.dispatch(LOAD_MONTHS)
     this.$store.dispatch(LOAD_PROJECTS)
+    this.$store.dispatch(LOAD_ORDERS)
   }
 }
 </script>
@@ -53,7 +69,6 @@ export default {
   font-family "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
-  font-size 80%
 
 .btn#dropdownMenuButton
   width 160px
