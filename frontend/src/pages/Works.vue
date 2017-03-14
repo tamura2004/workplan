@@ -1,6 +1,6 @@
 <template lang="pug">
-.container
-  h5 要員計画
+.container.pt-4
+  h5 稼働計画
   table.table.table-sm.table-bordered
     thead.bg-faded
       tr
@@ -15,35 +15,35 @@
         td {{ user.number }}
         td {{ user.name }}
         td#month(v-for="(month, col) in months")
-          Power(
+          WorkPower(
             :row="row",
             :col="col",
             :user="user",
             :month="month"
           )
         td
-          PowerTotalByUser(:user="user")
+          WorkPowerTotalByUser(:user="user")
       tr
         td(colspan="3") 合計
         td(v-for="month in months")
-          PowerTotalByMonth(:month="month")
+          WorkPowerTotalByMonth(:month="month")
         td
-          PowerTotal
+          WorkPowerTotal
 
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 
-import Power from './works/Power'
-import PowerTotalByMonth from './works/PowerTotalByMonth'
-import PowerTotalByUser from './works/PowerTotalByUser'
-import PowerTotal from './works/PowerTotal'
+import WorkPower from './works/Power'
+import WorkPowerTotalByMonth from './works/PowerTotalByMonth'
+import WorkPowerTotalByUser from './works/PowerTotalByUser'
+import WorkPowerTotal from './works/PowerTotal'
 import { LOAD_WORKS } from '@/vuex/mutation-types'
 
 export default {
   name: 'Works',
-  components: { Power, PowerTotalByMonth, PowerTotalByUser, PowerTotal },
+  components: { WorkPower, WorkPowerTotalByMonth, WorkPowerTotalByUser, WorkPowerTotal },
   computed: mapGetters(['works', 'months', 'users']),
   created () {
     this.$store.dispatch(LOAD_WORKS)
@@ -53,6 +53,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="stylus" scoped>
+table
+  font-size 80%
 // number, name
 for col in 1
   th:nth-child({col})

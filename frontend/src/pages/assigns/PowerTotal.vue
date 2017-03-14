@@ -1,6 +1,6 @@
 <template lang="pug">
 
-span {{ workPowerTotalByMonth(month) / 100 }}
+span {{ assignPowerTotal / 100 }}
 
 </template>
 
@@ -8,9 +8,8 @@ span {{ workPowerTotalByMonth(month) / 100 }}
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'WorkPowerTotalByMonth',
-  props: ['month'],
-  computed: mapGetters(['workPowerTotalByMonth'])
+  name: 'AssignPowerTotal',
+  computed: mapGetters(['assignPowerTotal'])
 }
 
 </script>
