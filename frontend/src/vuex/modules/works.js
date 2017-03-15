@@ -36,7 +36,7 @@ const getters = {
       return w.month_id === month.id
     })
   },
-  powerTotalByMonth: (state, getters) => month => {
+  workPowerTotalByMonth: (state, getters) => month => {
     return getters.workByMonth(month).reduce(_total, 0)
   },
   workByUser: (state, getters) => user => {
@@ -44,10 +44,10 @@ const getters = {
       return w.user_id === user.id
     })
   },
-  powerTotalByUser: (state, getters) => user => {
+  workPowerTotalByUser: (state, getters) => user => {
     return getters.workByUser(user).reduce(_total, 0)
   },
-  powerTotal: (state, getters) => {
+  workPowerTotal: (state, getters) => {
     return getters.works.reduce(_total, 0)
   }
 }

@@ -20,7 +20,19 @@ function _total (total, w) {
 
 // getters
 const getters = {
-  assigns: state => state.assigns,
+  assigns: (state, getters, rootState) => {
+    let assigns = Object.assign({}, state.assigns)
+    if (rootState.project !== null) {
+      assigns = assigns.find(a => a.project_id === rootState.project.id)
+    }
+    if (rootState.group !== null) {
+      assigns = assigns.find(a => a.group_id === rootState.group.id)
+    }
+    if (rootState.system !== null) {
+      assigns = assigns.find(a => a.system_id === rootState.system.id)
+    }
+    return assigns
+  },
   assign: (state, getters) => (user, month) => {
     return getters.assigns.find((assign) => {
       return assign.user_id === user.id && assign.month_id === month.id

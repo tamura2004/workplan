@@ -50,10 +50,25 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import { LOAD_USERS, LOAD_RANKS, LOAD_MONTHS, LOAD_PROJECTS, LOAD_ORDERS } from '@/vuex/mutation-types'
+=======
+import { mapGetters } from 'vuex'
+import { LOAD_USERS, LOAD_RANKS, LOAD_MONTHS, LOAD_PROJECTS } from '@/vuex/mutation-types'
+>>>>>>> 1845f92722211dd37f8fd9bfae3f1f259d83d1cf
 
 export default {
   name: 'app',
+  computed: mapGetters(['project', 'group', 'system', 'projects', 'groups', 'systems']),
+  data () {
+    return {
+      select: {
+        project: false,
+        group: false,
+        system: false
+      }
+    }
+  },
   created () {
     this.$store.dispatch(LOAD_USERS)
     this.$store.dispatch(LOAD_RANKS)
@@ -69,8 +84,22 @@ export default {
   font-family "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
+<<<<<<< HEAD
+=======
 
-.btn#dropdownMenuButton
-  width 160px
-  margin 8px 16px
+#selectbox
+  border solid 1px #666
+
+li.nav-item:hover
+  color lightgray
+  background-color gray
+
+ul.list-group
+  font-size 80%
+  
+  li.list-group-item
+    padding 4px 8px
+>>>>>>> 1845f92722211dd37f8fd9bfae3f1f259d83d1cf
+
+  
 </style>

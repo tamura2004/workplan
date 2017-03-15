@@ -10,6 +10,9 @@ Vue.use(Vuex)
 
 import {
   SET_PROJECT,
+  SET_GROUP,
+  SET_SYSTEM,
+  SET_USER,
   LOAD_USERS,
   LOAD_RANKS,
   LOAD_MONTHS,
@@ -18,7 +21,11 @@ import {
 } from './mutation-types'
 
 const state = {
+  selecting: null,
   project: null,
+  group: null,
+  system: null,
+  user: null,
   ranks: [],
   users: [],
   months: [],
@@ -27,6 +34,9 @@ const state = {
 
 const getters = {
   project: state => state.project,
+  group: state => state.group,
+  system: state => state.system,
+  user: state => state.user,
   projects: state => state.projects,
   ranks: state => state.ranks,
   users: state => state.users,
@@ -43,9 +53,10 @@ const actions = {
 }
 
 const mutations = {
-  [SET_PROJECT] (state, project) {
-    state.project = project
-  },
+  [SET_PROJECT] (state, project) { state.project = project },
+  [SET_GROUP] (state, group) { state.group = group },
+  [SET_SYSTEM] (state, system) { state.system = system },
+  [SET_USER] (state, user) { state.user = user },
   [LOAD_USERS]: load(LOAD_USERS),
   [LOAD_RANKS]: load(LOAD_RANKS),
   [LOAD_PROJECTS]: load(LOAD_PROJECTS),

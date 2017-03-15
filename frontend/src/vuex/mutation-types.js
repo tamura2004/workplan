@@ -5,6 +5,9 @@ export const LOAD_PROJECTS = 'LOAD_PROJECTS'
 export const LOAD_ORDERS = 'LOAD_ORDERS'
 
 export const SET_PROJECT = 'SET_PROJECT'
+export const SET_GROUP = 'SET_GROUP'
+export const SET_SYSTEM = 'SET_SYSTEM'
+export const SET_USER = 'SET_USER'
 
 export const LOAD_WORKS = 'LOAD_WORKS'
 export const CHANGE_WORK = 'CHANGE_WORK'
