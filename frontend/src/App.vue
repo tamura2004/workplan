@@ -50,12 +50,8 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-import { LOAD_USERS, LOAD_RANKS, LOAD_MONTHS, LOAD_PROJECTS, LOAD_ORDERS } from '@/vuex/mutation-types'
-=======
 import { mapGetters } from 'vuex'
-import { LOAD_USERS, LOAD_RANKS, LOAD_MONTHS, LOAD_PROJECTS } from '@/vuex/mutation-types'
->>>>>>> 1845f92722211dd37f8fd9bfae3f1f259d83d1cf
+import { LOAD_USERS, LOAD_RANKS, LOAD_MONTHS, LOAD_PROJECTS, LOAD_ORDERS } from '@/vuex/mutation-types'
 
 export default {
   name: 'app',
@@ -84,8 +80,6 @@ export default {
   font-family "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
-<<<<<<< HEAD
-=======
 
 #selectbox
   border solid 1px #666
@@ -99,7 +93,5 @@ ul.list-group
   
   li.list-group-item
     padding 4px 8px
->>>>>>> 1845f92722211dd37f8fd9bfae3f1f259d83d1cf
-
   
 </style>
