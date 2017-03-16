@@ -1,7 +1,7 @@
 - model_class = Order
 .page-header
-  h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
-  h2= @project.fullname
+  h1 案件管理単位
+    small #{@project.fullname}
 table.table.table-striped
   thead
     tr
