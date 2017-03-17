@@ -5,4 +5,13 @@ class User < ApplicationRecord
 
   validates :number, presence: true, uniqueness: true
   validates :name, presence: true, uniqueness: true
+
+  has_many :works
+  has_many :assigns
+  has_many :orders, through: :assigns
+  has_many :projects, through: :orders
+
+  def fullname
+    number + " " + name
+  end
 end

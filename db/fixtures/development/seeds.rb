@@ -6,7 +6,6 @@ date = Date.today.beginning_of_month
 24.times do |i|
   Month.seed do |s|
     s.id = i
-    s.name = date.strftime("%m月")
     s.date = date
 
     date = date.next_month
@@ -17,6 +16,7 @@ end
   dept_name = Gimei.last.katakana
   Dept.seed do |s|
     s.id = i
+    s.number = i
     s.name = "#{dept_name}部"
   end
   2.times do |j|
@@ -24,6 +24,7 @@ end
     group_name = Gimei.last.katakana
     Group.seed do |s|
       s.id = group_id
+      s.number = group_id
       s.dept_id = i
       s.name = "#{dept_name}部#{group_name}課"
     end
@@ -33,6 +34,7 @@ end
 %w(PM TL CF AS BP).each_with_index do |name, id|
   Rank.seed do |s|
     s.id = id
+    s.number = id
     s.unit_price = 1000 + 1000 * id
     s.name = name
   end
@@ -71,8 +73,6 @@ end
 params = 100.times.map{
   [rand(12), rand(20)]
 }.sort.uniq
-
-pp params
 
 params.each_with_index do |arr, id|
   month_id, user_id = *arr

@@ -1,0 +1,22 @@
+.page-header
+  <h3> 案件割当
+    small = @user.fullname
+  </h3>
+
+table.table.table-striped
+  thead
+    tr
+      th 案件
+      th グループ
+      th システム
+      - @months.each do |month|
+        th= month.name
+  tbody
+    - @user.orders.aligned.uniq.each do |order|
+        tr
+          td= order.project&.name
+          td= order.group&.name
+          td= order.system&.name
+          - @months.each do |month|
+            td= @user.assigns.find_by(order: order, month: month).try!(:power)
+

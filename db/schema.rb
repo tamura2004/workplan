@@ -15,111 +15,113 @@ ActiveRecord::Schema.define(version: 20170308104405) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "assigns", force: :cascade do |t|
-    t.integer  "order_id"
-    t.integer  "user_id"
-    t.integer  "month_id"
-    t.integer  "power"
+  create_table "assigns", id: :serial, force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "user_id"
+    t.integer "month_id"
+    t.integer "power"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["month_id"], name: "index_assigns_on_month_id", using: :btree
-    t.index ["order_id", "user_id", "month_id"], name: "index_assigns_on_order_id_and_user_id_and_month_id", unique: true, using: :btree
-    t.index ["order_id"], name: "index_assigns_on_order_id", using: :btree
-    t.index ["user_id"], name: "index_assigns_on_user_id", using: :btree
+    t.index ["month_id"], name: "index_assigns_on_month_id"
+    t.index ["order_id", "user_id", "month_id"], name: "index_assigns_on_order_id_and_user_id_and_month_id", unique: true
+    t.index ["order_id"], name: "index_assigns_on_order_id"
+    t.index ["user_id"], name: "index_assigns_on_user_id"
   end
 
-  create_table "costs", force: :cascade do |t|
-    t.integer  "order_id"
-    t.integer  "rank_id"
-    t.integer  "month_id"
-    t.integer  "power"
+  create_table "costs", id: :serial, force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "rank_id"
+    t.integer "month_id"
+    t.integer "power"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["month_id"], name: "index_costs_on_month_id", using: :btree
-    t.index ["order_id", "rank_id", "month_id"], name: "index_costs_on_order_id_and_rank_id_and_month_id", unique: true, using: :btree
-    t.index ["order_id"], name: "index_costs_on_order_id", using: :btree
-    t.index ["rank_id"], name: "index_costs_on_rank_id", using: :btree
+    t.index ["month_id"], name: "index_costs_on_month_id"
+    t.index ["order_id", "rank_id", "month_id"], name: "index_costs_on_order_id_and_rank_id_and_month_id", unique: true
+    t.index ["order_id"], name: "index_costs_on_order_id"
+    t.index ["rank_id"], name: "index_costs_on_rank_id"
   end
 
-  create_table "depts", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "groups", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.integer  "dept_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["dept_id"], name: "index_groups_on_dept_id", using: :btree
-  end
-
-  create_table "months", force: :cascade do |t|
-    t.string   "name"
-    t.date     "date"
+  create_table "depts", id: :serial, force: :cascade do |t|
+    t.string "number", null: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.integer  "project_id"
-    t.integer  "group_id"
-    t.integer  "system_id"
-    t.integer  "price"
+  create_table "groups", id: :serial, force: :cascade do |t|
+    t.string "number", null: false
+    t.string "name", null: false
+    t.integer "dept_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_orders_on_group_id", using: :btree
-    t.index ["project_id", "group_id", "system_id"], name: "index_orders_on_project_id_and_group_id_and_system_id", unique: true, using: :btree
-    t.index ["project_id"], name: "index_orders_on_project_id", using: :btree
-    t.index ["system_id"], name: "index_orders_on_system_id", using: :btree
+    t.index ["dept_id"], name: "index_groups_on_dept_id"
   end
 
-  create_table "projects", force: :cascade do |t|
-    t.string   "number"
-    t.string   "name"
-    t.integer  "month_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["month_id"], name: "index_projects_on_month_id", using: :btree
-  end
-
-  create_table "ranks", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "unit_price"
+  create_table "months", id: :serial, force: :cascade do |t|
+    t.date "date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "systems", force: :cascade do |t|
-    t.string   "number"
-    t.string   "name"
+  create_table "orders", id: :serial, force: :cascade do |t|
+    t.integer "project_id"
+    t.integer "group_id"
+    t.integer "system_id"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_orders_on_group_id"
+    t.index ["project_id", "group_id", "system_id"], name: "index_orders_on_project_id_and_group_id_and_system_id", unique: true
+    t.index ["project_id"], name: "index_orders_on_project_id"
+    t.index ["system_id"], name: "index_orders_on_system_id"
+  end
+
+  create_table "projects", id: :serial, force: :cascade do |t|
+    t.string "number", null: false
+    t.string "name", null: false
+    t.integer "month_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["month_id"], name: "index_projects_on_month_id"
+  end
+
+  create_table "ranks", id: :serial, force: :cascade do |t|
+    t.string "number", null: false
+    t.string "name", null: false
+    t.integer "unit_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "number"
-    t.string   "name"
-    t.integer  "rank_id"
-    t.integer  "group_id"
-    t.integer  "month_id"
+  create_table "systems", id: :serial, force: :cascade do |t|
+    t.string "number", null: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_users_on_group_id", using: :btree
-    t.index ["month_id"], name: "index_users_on_month_id", using: :btree
-    t.index ["rank_id"], name: "index_users_on_rank_id", using: :btree
   end
 
-  create_table "works", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "month_id"
-    t.integer  "power"
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "number", null: false
+    t.string "name", null: false
+    t.integer "rank_id"
+    t.integer "group_id"
+    t.integer "month_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["month_id"], name: "index_works_on_month_id", using: :btree
-    t.index ["user_id", "month_id"], name: "index_works_on_user_id_and_month_id", unique: true, using: :btree
-    t.index ["user_id"], name: "index_works_on_user_id", using: :btree
+    t.index ["group_id"], name: "index_users_on_group_id"
+    t.index ["month_id"], name: "index_users_on_month_id"
+    t.index ["rank_id"], name: "index_users_on_rank_id"
+  end
+
+  create_table "works", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "month_id"
+    t.integer "power"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["month_id"], name: "index_works_on_month_id"
+    t.index ["user_id", "month_id"], name: "index_works_on_user_id_and_month_id", unique: true
+    t.index ["user_id"], name: "index_works_on_user_id"
   end
 
   add_foreign_key "assigns", "months"
