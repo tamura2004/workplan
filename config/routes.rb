@@ -11,12 +11,23 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :users do
+      scope module: :users do
+        resources :assigns
+      end
+    end
+
+    resources :orders do
+      scope module: :orders do
+        resources :assigns
+        resources :costs
+      end
+    end
+
     resources :groups
     resources :systems
 
     resources :months
-    resources :users
-    resources :orders
 
     resources :works
     resources :assigns
@@ -26,5 +37,3 @@ Rails.application.routes.draw do
   root "project#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
-
-__END__
