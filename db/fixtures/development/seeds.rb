@@ -1,14 +1,19 @@
 require "gimei"
-require "pp"
 
-date = Date.today.beginning_of_month
-
-24.times do |i|
-  Month.seed do |s|
+4.times do |i|
+  Year.seed do |s|
     s.id = i
-    s.date = date
+    s.date = Date.new(2016 + i, 1, 1)
+  end
+end
 
-    date = date.next_month
+4.times do |year_id|
+  12.times do |i|
+    Month.seed do |s|
+      s.id = i + year_id * 12
+      s.year_id = year_id
+      s.date = Date.new(2016 + year_id, i + 1, 1).months_since(3)
+    end
   end
 end
 
@@ -47,7 +52,6 @@ end
     s.number = sprintf("%06d",rand(1000000))
     s.rank_id = rand(5)
     s.group_id = rand(4)
-    s.month_id = rand(24)
   end
 end
 
@@ -66,7 +70,13 @@ varb = %w(構築 更改 制度対応 廃棄対応 機能追加 性能改善)
     s.id = i
     s.number = rand(10000000) * 1000
     s.name = "#{Gimei.last.kanji}システムの#{varb.sample}"
-    s.month_id = rand(24)
+  end
+end
+
+%w(企画 検討 設計 開発 検証 移行 運用 廃棄).each_with_index do |name, id|
+  Step.seed do |s|
+    s.id = id
+    s.name = name
   end
 end
 

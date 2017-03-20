@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308104405) do
+ActiveRecord::Schema.define(version: 20170320082838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20170308104405) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["month_id"], name: "index_assigns_on_month_id"
-    t.index ["order_id", "user_id", "month_id"], name: "index_assigns_on_order_id_and_user_id_and_month_id", unique: true
     t.index ["order_id"], name: "index_assigns_on_order_id"
     t.index ["user_id"], name: "index_assigns_on_user_id"
   end
@@ -36,7 +35,6 @@ ActiveRecord::Schema.define(version: 20170308104405) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["month_id"], name: "index_costs_on_month_id"
-    t.index ["order_id", "rank_id", "month_id"], name: "index_costs_on_order_id_and_rank_id_and_month_id", unique: true
     t.index ["order_id"], name: "index_costs_on_order_id"
     t.index ["rank_id"], name: "index_costs_on_rank_id"
   end
@@ -58,9 +56,11 @@ ActiveRecord::Schema.define(version: 20170308104405) do
   end
 
   create_table "months", id: :serial, force: :cascade do |t|
+    t.integer "year_id", null: false
     t.date "date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["year_id"], name: "index_months_on_year_id"
   end
 
   create_table "orders", id: :serial, force: :cascade do |t|
@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(version: 20170308104405) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_orders_on_group_id"
-    t.index ["project_id", "group_id", "system_id"], name: "index_orders_on_project_id_and_group_id_and_system_id", unique: true
     t.index ["project_id"], name: "index_orders_on_project_id"
     t.index ["system_id"], name: "index_orders_on_system_id"
   end
@@ -79,16 +78,32 @@ ActiveRecord::Schema.define(version: 20170308104405) do
   create_table "projects", id: :serial, force: :cascade do |t|
     t.string "number", null: false
     t.string "name", null: false
-    t.integer "month_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["month_id"], name: "index_projects_on_month_id"
   end
 
   create_table "ranks", id: :serial, force: :cascade do |t|
     t.string "number", null: false
     t.string "name", null: false
     t.integer "unit_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.bigint "project_id"
+    t.bigint "month_id"
+    t.bigint "step_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["month_id"], name: "index_schedules_on_month_id"
+    t.index ["project_id"], name: "index_schedules_on_project_id"
+    t.index ["step_id"], name: "index_schedules_on_step_id"
+  end
+
+  create_table "steps", force: :cascade do |t|
+    t.string "number"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -105,11 +120,9 @@ ActiveRecord::Schema.define(version: 20170308104405) do
     t.string "name", null: false
     t.integer "rank_id"
     t.integer "group_id"
-    t.integer "month_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_users_on_group_id"
-    t.index ["month_id"], name: "index_users_on_month_id"
     t.index ["rank_id"], name: "index_users_on_rank_id"
   end
 
@@ -120,8 +133,13 @@ ActiveRecord::Schema.define(version: 20170308104405) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["month_id"], name: "index_works_on_month_id"
-    t.index ["user_id", "month_id"], name: "index_works_on_user_id_and_month_id", unique: true
     t.index ["user_id"], name: "index_works_on_user_id"
+  end
+
+  create_table "years", force: :cascade do |t|
+    t.date "date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "assigns", "months"
@@ -131,12 +149,14 @@ ActiveRecord::Schema.define(version: 20170308104405) do
   add_foreign_key "costs", "orders"
   add_foreign_key "costs", "ranks"
   add_foreign_key "groups", "depts"
+  add_foreign_key "months", "years"
   add_foreign_key "orders", "groups"
   add_foreign_key "orders", "projects"
   add_foreign_key "orders", "systems"
-  add_foreign_key "projects", "months"
+  add_foreign_key "schedules", "months"
+  add_foreign_key "schedules", "projects"
+  add_foreign_key "schedules", "steps"
   add_foreign_key "users", "groups"
-  add_foreign_key "users", "months"
   add_foreign_key "users", "ranks"
   add_foreign_key "works", "months"
   add_foreign_key "works", "users"

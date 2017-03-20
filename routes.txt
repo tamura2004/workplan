@@ -1,0 +1,123 @@
+            Prefix Verb   URI Pattern                                         Controller#Action
+       works_chart GET    /api/works/chart(.:format)                          works#chart
+             depts GET    /api/depts(.:format)                                depts#index
+                   POST   /api/depts(.:format)                                depts#create
+          new_dept GET    /api/depts/new(.:format)                            depts#new
+         edit_dept GET    /api/depts/:id/edit(.:format)                       depts#edit
+              dept GET    /api/depts/:id(.:format)                            depts#show
+                   PATCH  /api/depts/:id(.:format)                            depts#update
+                   PUT    /api/depts/:id(.:format)                            depts#update
+                   DELETE /api/depts/:id(.:format)                            depts#destroy
+             ranks GET    /api/ranks(.:format)                                ranks#index
+                   POST   /api/ranks(.:format)                                ranks#create
+          new_rank GET    /api/ranks/new(.:format)                            ranks#new
+         edit_rank GET    /api/ranks/:id/edit(.:format)                       ranks#edit
+              rank GET    /api/ranks/:id(.:format)                            ranks#show
+                   PATCH  /api/ranks/:id(.:format)                            ranks#update
+                   PUT    /api/ranks/:id(.:format)                            ranks#update
+                   DELETE /api/ranks/:id(.:format)                            ranks#destroy
+            groups GET    /api/groups(.:format)                               groups#index
+                   POST   /api/groups(.:format)                               groups#create
+         new_group GET    /api/groups/new(.:format)                           groups#new
+        edit_group GET    /api/groups/:id/edit(.:format)                      groups#edit
+             group GET    /api/groups/:id(.:format)                           groups#show
+                   PATCH  /api/groups/:id(.:format)                           groups#update
+                   PUT    /api/groups/:id(.:format)                           groups#update
+                   DELETE /api/groups/:id(.:format)                           groups#destroy
+           systems GET    /api/systems(.:format)                              systems#index
+                   POST   /api/systems(.:format)                              systems#create
+        new_system GET    /api/systems/new(.:format)                          systems#new
+       edit_system GET    /api/systems/:id/edit(.:format)                     systems#edit
+            system GET    /api/systems/:id(.:format)                          systems#show
+                   PATCH  /api/systems/:id(.:format)                          systems#update
+                   PUT    /api/systems/:id(.:format)                          systems#update
+                   DELETE /api/systems/:id(.:format)                          systems#destroy
+            months GET    /api/months(.:format)                               months#index
+                   POST   /api/months(.:format)                               months#create
+         new_month GET    /api/months/new(.:format)                           months#new
+        edit_month GET    /api/months/:id/edit(.:format)                      months#edit
+             month GET    /api/months/:id(.:format)                           months#show
+                   PATCH  /api/months/:id(.:format)                           months#update
+                   PUT    /api/months/:id(.:format)                           months#update
+                   DELETE /api/months/:id(.:format)                           months#destroy
+    project_orders GET    /api/projects/:project_id/orders(.:format)          projects/orders#index
+                   POST   /api/projects/:project_id/orders(.:format)          projects/orders#create
+ new_project_order GET    /api/projects/:project_id/orders/new(.:format)      projects/orders#new
+edit_project_order GET    /api/projects/:project_id/orders/:id/edit(.:format) projects/orders#edit
+     project_order GET    /api/projects/:project_id/orders/:id(.:format)      projects/orders#show
+                   PATCH  /api/projects/:project_id/orders/:id(.:format)      projects/orders#update
+                   PUT    /api/projects/:project_id/orders/:id(.:format)      projects/orders#update
+                   DELETE /api/projects/:project_id/orders/:id(.:format)      projects/orders#destroy
+          projects GET    /api/projects(.:format)                             projects#index
+                   POST   /api/projects(.:format)                             projects#create
+       new_project GET    /api/projects/new(.:format)                         projects#new
+      edit_project GET    /api/projects/:id/edit(.:format)                    projects#edit
+           project GET    /api/projects/:id(.:format)                         projects#show
+                   PATCH  /api/projects/:id(.:format)                         projects#update
+                   PUT    /api/projects/:id(.:format)                         projects#update
+                   DELETE /api/projects/:id(.:format)                         projects#destroy
+      user_assigns GET    /api/users/:user_id/assigns(.:format)               users/assigns#index
+                   POST   /api/users/:user_id/assigns(.:format)               users/assigns#create
+   new_user_assign GET    /api/users/:user_id/assigns/new(.:format)           users/assigns#new
+  edit_user_assign GET    /api/users/:user_id/assigns/:id/edit(.:format)      users/assigns#edit
+       user_assign GET    /api/users/:user_id/assigns/:id(.:format)           users/assigns#show
+                   PATCH  /api/users/:user_id/assigns/:id(.:format)           users/assigns#update
+                   PUT    /api/users/:user_id/assigns/:id(.:format)           users/assigns#update
+                   DELETE /api/users/:user_id/assigns/:id(.:format)           users/assigns#destroy
+             users GET    /api/users(.:format)                                users#index
+                   POST   /api/users(.:format)                                users#create
+          new_user GET    /api/users/new(.:format)                            users#new
+         edit_user GET    /api/users/:id/edit(.:format)                       users#edit
+              user GET    /api/users/:id(.:format)                            users#show
+                   PATCH  /api/users/:id(.:format)                            users#update
+                   PUT    /api/users/:id(.:format)                            users#update
+                   DELETE /api/users/:id(.:format)                            users#destroy
+     order_assigns GET    /api/orders/:order_id/assigns(.:format)             orders/assigns#index
+                   POST   /api/orders/:order_id/assigns(.:format)             orders/assigns#create
+  new_order_assign GET    /api/orders/:order_id/assigns/new(.:format)         orders/assigns#new
+ edit_order_assign GET    /api/orders/:order_id/assigns/:id/edit(.:format)    orders/assigns#edit
+      order_assign GET    /api/orders/:order_id/assigns/:id(.:format)         orders/assigns#show
+                   PATCH  /api/orders/:order_id/assigns/:id(.:format)         orders/assigns#update
+                   PUT    /api/orders/:order_id/assigns/:id(.:format)         orders/assigns#update
+                   DELETE /api/orders/:order_id/assigns/:id(.:format)         orders/assigns#destroy
+       order_costs GET    /api/orders/:order_id/costs(.:format)               orders/costs#index
+                   POST   /api/orders/:order_id/costs(.:format)               orders/costs#create
+    new_order_cost GET    /api/orders/:order_id/costs/new(.:format)           orders/costs#new
+   edit_order_cost GET    /api/orders/:order_id/costs/:id/edit(.:format)      orders/costs#edit
+        order_cost GET    /api/orders/:order_id/costs/:id(.:format)           orders/costs#show
+                   PATCH  /api/orders/:order_id/costs/:id(.:format)           orders/costs#update
+                   PUT    /api/orders/:order_id/costs/:id(.:format)           orders/costs#update
+                   DELETE /api/orders/:order_id/costs/:id(.:format)           orders/costs#destroy
+            orders GET    /api/orders(.:format)                               orders#index
+                   POST   /api/orders(.:format)                               orders#create
+         new_order GET    /api/orders/new(.:format)                           orders#new
+        edit_order GET    /api/orders/:id/edit(.:format)                      orders#edit
+             order GET    /api/orders/:id(.:format)                           orders#show
+                   PATCH  /api/orders/:id(.:format)                           orders#update
+                   PUT    /api/orders/:id(.:format)                           orders#update
+                   DELETE /api/orders/:id(.:format)                           orders#destroy
+             works GET    /api/works(.:format)                                works#index
+                   POST   /api/works(.:format)                                works#create
+          new_work GET    /api/works/new(.:format)                            works#new
+         edit_work GET    /api/works/:id/edit(.:format)                       works#edit
+              work GET    /api/works/:id(.:format)                            works#show
+                   PATCH  /api/works/:id(.:format)                            works#update
+                   PUT    /api/works/:id(.:format)                            works#update
+                   DELETE /api/works/:id(.:format)                            works#destroy
+           assigns GET    /api/assigns(.:format)                              assigns#index
+                   POST   /api/assigns(.:format)                              assigns#create
+        new_assign GET    /api/assigns/new(.:format)                          assigns#new
+       edit_assign GET    /api/assigns/:id/edit(.:format)                     assigns#edit
+            assign GET    /api/assigns/:id(.:format)                          assigns#show
+                   PATCH  /api/assigns/:id(.:format)                          assigns#update
+                   PUT    /api/assigns/:id(.:format)                          assigns#update
+                   DELETE /api/assigns/:id(.:format)                          assigns#destroy
+             costs GET    /api/costs(.:format)                                costs#index
+                   POST   /api/costs(.:format)                                costs#create
+          new_cost GET    /api/costs/new(.:format)                            costs#new
+         edit_cost GET    /api/costs/:id/edit(.:format)                       costs#edit
+              cost GET    /api/costs/:id(.:format)                            costs#show
+                   PATCH  /api/costs/:id(.:format)                            costs#update
+                   PUT    /api/costs/:id(.:format)                            costs#update
+                   DELETE /api/costs/:id(.:format)                            costs#destroy
+              root GET    /                                                   project#index

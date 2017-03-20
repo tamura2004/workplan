@@ -12,4 +12,8 @@ class Month < ApplicationRecord
       errors.add(:illegal_date, "日付は月初１日でなくてはならない")
     end
   end
+
+  def name
+    date.strftime("%Y-%m")
+  end
 end

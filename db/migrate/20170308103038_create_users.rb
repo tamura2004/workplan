@@ -5,7 +5,6 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :name, null: false
       t.references :rank, foreign_key: true
       t.references :group, foreign_key: true
-      t.references :month, foreign_key: true
 
       t.timestamps
     end

@@ -8,7 +8,5 @@ class CreateOrders < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-
-    add_index :orders, [:project_id, :group_id, :system_id], unique: true
   end
 end

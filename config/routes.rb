@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
     resources :depts
     resources :ranks
+    resources :groups
+    resources :systems
+    resources :months
 
     resources :projects do
       scope module: :projects do
@@ -24,14 +27,10 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :groups
-    resources :systems
-
-    resources :months
-
     resources :works
     resources :assigns
     resources :costs
+
   end
 
   root "project#index"
