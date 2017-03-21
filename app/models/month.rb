@@ -4,6 +4,7 @@ class Month < ApplicationRecord
   has_many :works
   has_many :costs
   has_many :assigns
+  has_many :orders, through: :assigns
 
   validate :must_be_first_day_of_month
 

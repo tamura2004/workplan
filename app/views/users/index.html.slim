@@ -9,7 +9,6 @@ table.table.table-striped
       th= model_class.human_attribute_name(:name)
       th= model_class.human_attribute_name(:rank_id)
       th= model_class.human_attribute_name(:group_id)
-      th 終了月
       th=t '.actions', :default => t("helpers.actions")
   tbody
     - @users.each do |user|
@@ -19,9 +18,8 @@ table.table.table-striped
         td= user.name
         td= user.rank&.name
         td= user.group&.name
-        td= user.month&.date&.strftime("%Y/%m")
         td
-          = link_to "案件割当", user_assigns_path(user, @assign), :class => 'btn btn-default btn-xs'
+          = link_to "案件割当", assigns_user_path(user), :class => 'btn btn-default btn-xs'
           = link_to t('.show', :default => t("helpers.links.show")), user_path(user), :class => 'btn btn-default btn-xs'
           '
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_user_path(user), :class => 'btn btn-default btn-xs'

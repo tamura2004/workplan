@@ -1,18 +1,18 @@
 require "gimei"
 
-4.times do |i|
+2.times do |i|
   Year.seed do |s|
     s.id = i
-    s.date = Date.new(2016 + i, 1, 1)
+    s.date = Date.new(2017 + i, 1, 1)
   end
 end
 
-4.times do |year_id|
+2.times do |year_id|
   12.times do |i|
     Month.seed do |s|
       s.id = i + year_id * 12
       s.year_id = year_id
-      s.date = Date.new(2016 + year_id, i + 1, 1).months_since(3)
+      s.date = Date.new(2017 + year_id, i + 1, 1).months_since(3)
     end
   end
 end
@@ -55,7 +55,7 @@ end
   end
 end
 
-10.times do |i|
+3.times do |i|
   System.seed do |s|
     s.id = i
     s.number = "#{rand(10)}-#{rand(100)}"
@@ -65,7 +65,7 @@ end
 
 varb = %w(構築 更改 制度対応 廃棄対応 機能追加 性能改善)
 
-10.times do |i|
+3.times do |i|
   Project.seed do |s|
     s.id = i
     s.number = rand(10000000) * 1000
@@ -80,8 +80,8 @@ end
   end
 end
 
-params = 100.times.map{
-  [rand(12), rand(20)]
+params = 400.times.map{
+  [rand(24), rand(20)]
 }.sort.uniq
 
 params.each_with_index do |arr, id|
@@ -94,8 +94,8 @@ params.each_with_index do |arr, id|
   end
 end
 
-params = 100.times.map{
-  [rand(10), rand(4), rand(10)]
+params = 10.times.map{
+  [rand(3), rand(4), rand(3)]
 }.uniq.sample(50)
 
 params.each_with_index do |arr, id|
@@ -109,8 +109,8 @@ params.each_with_index do |arr, id|
   end
 end
 
-params = 100.times.map{
-  [rand(50), rand(5), rand(12)]
+params = 400.times.map{
+  [rand(5), rand(5), rand(24)]
 }.uniq
 
 params.each_with_index do |arr, id|
@@ -124,8 +124,8 @@ params.each_with_index do |arr, id|
   end
 end
 
-params = 100.times.map{
-  [rand(50), rand(20), rand(12)]
+params = 400.times.map{
+  [rand(5), rand(20), rand(24)]
 }.uniq
 
 params.each_with_index do |arr, id|

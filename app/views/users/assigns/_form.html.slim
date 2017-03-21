@@ -1,8 +1,0 @@
-= simple_form_for @assign, :html => { :class => "form-horizontal" } do |f|
-  = f.association :order
-  = f.association :user
-  = f.association :month
-  = f.input :power
-  = f.button :submit, :class => 'btn-primary'
-  '
-  = link_to t('.cancel', :default => t("helpers.links.cancel")), user_assigns_path, :class => 'btn btn-default'

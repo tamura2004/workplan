@@ -7,30 +7,16 @@ Rails.application.routes.draw do
     resources :groups
     resources :systems
     resources :months
-
-    resources :projects do
-      scope module: :projects do
-        resources :orders
-      end
-    end
-
-    resources :users do
-      scope module: :users do
-        resources :assigns
-      end
-    end
-
-    resources :orders do
-      scope module: :orders do
-        resources :assigns
-        resources :costs
-      end
-    end
-
+    resources :projects
+    resources :users
+    resources :orders
     resources :works
-    resources :assigns
     resources :costs
+    resources :assigns
 
+    namespace :assigns do
+      resources :users, only: [:show, :edit, :update]
+    end
   end
 
   root "project#index"
