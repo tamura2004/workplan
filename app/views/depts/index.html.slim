@@ -5,6 +5,7 @@ table.table.table-striped
   thead
     tr
       th= model_class.human_attribute_name(:id)
+      th= model_class.human_attribute_name(:number)
       th= model_class.human_attribute_name(:name)
       th= model_class.human_attribute_name(:created_at)
       th=t '.actions', :default => t("helpers.actions")
@@ -12,6 +13,7 @@ table.table.table-striped
     - @depts.each do |dept|
       tr
         td= link_to dept.id, dept_path(dept)
+        td= dept.number
         td= dept.name
         td=l dept.created_at
         td

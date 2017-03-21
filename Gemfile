@@ -25,19 +25,19 @@ group :development, :test do
   gem "faker"
   gem "gimei"
 
-  gem "hirb"
-  gem "hirb-unicode"
-  gem "pry-rails"
-  gem "pry-doc"
-  gem "pry-byebug"
-  
   gem "launchy"
   gem "rails-controller-testing"
   gem "rspec-rails"
   gem "rspec-request_describer"
   gem "selenium-webdriver"
   gem "simplecov"
+  gem "hirb"
+  gem "hirb-unicode"
+  gem "pry-rails"
+  gem "pry-doc"
+  gem "pry-byebug"
 end
+
 
 gem "slim-rails"
 gem "therubyracer"

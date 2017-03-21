@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all.order(:rank_id, :number)
+    @users = User.all.includes(:rank, :group).order(:rank_id, :number)
   end
 
   # GET /users/1

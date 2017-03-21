@@ -1,0 +1,5 @@
+#!/usr/bin/zsh
+bundle exec rails webpacker:compile
+RAILS_ENV=production bundle exec bin/webpack
+export RAILS_SERVE_STATIC_FILES=true
+RAILS_ENV=production bundle exec rails s

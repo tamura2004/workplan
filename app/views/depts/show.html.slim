@@ -3,6 +3,11 @@
   h2=t '.title', :default => model_class.model_name.human.titleize
 
 p
+  strong= model_class.human_attribute_name(:number) + ':'
+  br
+  = @dept.number
+
+p
   strong= model_class.human_attribute_name(:name) + ':'
   br
   = @dept.name

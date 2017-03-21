@@ -41,7 +41,6 @@
             .form-group
               input.form-control(v-model="assign.power", type="text")
 
-
 </template>
 
 <script>

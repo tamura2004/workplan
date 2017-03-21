@@ -1,1 +1,1 @@
-json.extract! group, :id, :name, :dept_id
+json.extract! group, :id, :number, :name, :dept_id

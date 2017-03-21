@@ -5,6 +5,7 @@ table.table.table-striped
   thead
     tr
       th= model_class.human_attribute_name(:id)
+      th= model_class.human_attribute_name(:number)
       th= model_class.human_attribute_name(:name)
       th= model_class.human_attribute_name(:dept_id)
       th= model_class.human_attribute_name(:created_at)
@@ -13,6 +14,7 @@ table.table.table-striped
     - @groups.each do |group|
       tr
         td= link_to group.id, group_path(group)
+        td= group.number
         td= group.name
         td= group.dept_id
         td=l group.created_at

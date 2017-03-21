@@ -1,11 +1,11 @@
-4.times do |i|
+5.times do |i|
   Year.seed do |s|
     s.id = i
     s.date = Date.new(2016 + i, 1, 1)
   end
 end
 
-4.times do |year_id|
+5.times do |year_id|
   12.times do |i|
     Month.seed do |s|
       s.id = i + year_id * 12

@@ -10,10 +10,6 @@ p
   strong= model_class.human_attribute_name(:name) + ':'
   br
   = @project.name
-p
-  strong= model_class.human_attribute_name(:end_month) + ':'
-  br
-  = @project.end_month
 
 = link_to t('.back', :default => t("helpers.links.back")), projects_path, :class => 'btn btn-default'
 '

@@ -7,7 +7,6 @@ table.table.table-striped
       th= model_class.human_attribute_name(:id)
       th= model_class.human_attribute_name(:number)
       th= model_class.human_attribute_name(:name)
-      th 終了月
       th=t '.actions', :default => t("helpers.actions")
   tbody
     - @projects.each do |project|
@@ -15,10 +14,7 @@ table.table.table-striped
         td= link_to project.id, project_path(project)
         td= project.number
         td= project.name
-        td= project.month&.date&.strftime("%Y/%m")
         td
-          = link_to "グループ/システム別", project_orders_path(project), :class => 'btn btn-default btn-xs'
-          '
           = link_to t('.show', :default => t("helpers.links.show")), project_path(project), :class => 'btn btn-default btn-xs'
           '
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_project_path(project), :class => 'btn btn-default btn-xs'
